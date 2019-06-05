@@ -109,6 +109,7 @@ for each in "${@}"
 do
   # extract the student number from each file
   stuNumber=`echo ${each} | sed 's/.*[^0-9]\([0-9]\{5,10\}\).*\.pdf$/\1/g'`
+  # add a check for failed grep
   studentDir=`grep $stuNumber "${dirCache}"`
   newName=${mySchoolYear}_`basename $each`
   cp ${each} ${studentDir}/${newName}
