@@ -5,10 +5,23 @@
 # add test results into Google Drive portfolio folders over google filestream
 
 # update this if the name of the shared drive changes
-mySharedDrive="/Volumes/GoogleDrive/Shared drives/ASH Student Cumulative Folders/"
+mySharedDriveName="ASH Student Cumulative Folders"
 
+# root of Google Shared Drives
+mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
+
+
+
+
+
+
+# full path to shared drive
+mySharedDrive=${mySharedRoot}${mySharedDriveName}/
+
+# check that this file exists before attempting to do anything
 checkFile="checkFile_DO_NOT_REMOVE.txt"
 
+# set the long name and short name for the application
 myLongName='com.txoof.'`basename $0`
 myName=`basename "$0"`
 
@@ -50,6 +63,26 @@ usage() {
 if [[ $# -lt 1 ]]; then
   usage
 fi
+
+if [[ ! -f $mySharedDrive/$checkFile ]]; then
+  echo "FATAL ERROR!"
+  echo "Check file is missing from $mySharedDriveName"
+  echo " "
+  echo "Check the following :"
+  echo "     * Google File Stream is running and signed in"
+  echo "     * Check the name of the Google Shared Drive"
+  echo "          * expected name: $mySharedDriveName"
+  echo "     * $checkFile exists in $mySharedDrive"
+  echo " "
+  echo "If '$checkFile' is missing from the Shared drive,"
+  echo "it can be recreated by opening the terminal app typing the following command:"
+  echo " "
+  echo "touch $mySharedDrive/$checkFile"
+  echo " "
+  echo "exiting - cannot continue without checkfile"
+  exit 0
+fi
+
 
 # create a directory cache of folders stored in sharedDrive
 myTempDir=$TMPDIR${myLongName}
