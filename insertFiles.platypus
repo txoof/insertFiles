@@ -23,7 +23,7 @@
 	<key>DocIconPath</key>
 	<string></string>
 	<key>Droppable</key>
-	<false/>
+	<true/>
 	<key>ExecutablePath</key>
 	<string>/usr/local/share/platypus/ScriptExec</string>
 	<key>IconPath</key>

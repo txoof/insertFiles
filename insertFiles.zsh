@@ -2,18 +2,17 @@
 # written by Aaron Ciuffo (aaron.ciuffo@gmail.com)
 # https://github.com/txoof/insertFiles
 
-# add test results into Google Drive portfolio folders over google filestream
+# add files that contain student numbers into Google Drive portfolio folders 
+# over google filestream
 
-# update this if the name of the shared drive changes
+# set the shared drive name for the portfolio folder
 mySharedDriveName="ASH Student Cumulative Folders"
 
 # root of Google Shared Drives
 mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
 
 
-
-
-
+####################################################
 
 # full path to shared drive
 mySharedDrive=${mySharedRoot}${mySharedDriveName}/
@@ -42,6 +41,7 @@ schoolYear() {
 }
 
 usage() {
+  # usage instructions
   echo "$myName: inserts multiple test files into a Google Shared drive" 
   echo "folder based on student numbers"
   echo "=========================="
@@ -54,16 +54,18 @@ usage() {
   echo "written by Aaron Ciuffo - aaron.ciuffo@gmail.com"
   echo "updates at: https://github.com/txoof/insertFiles"
   exit 0
-
 }
 
 
+# main
 
-
+# check if there were files were provided as arguments
 if [[ $# -lt 1 ]]; then
   usage
 fi
 
+# a check file resides in the root of the team drive
+# if the check file is missing, exit out
 if [[ ! -f $mySharedDrive/$checkFile ]]; then
   echo "FATAL ERROR!"
   echo "Check file is missing from $mySharedDriveName"
@@ -117,11 +119,19 @@ do
   fi
 done
 
+# show the failed files
 if [[ ${#cpFail[@]} -gt 0 ]]; then
   echo "Failed to insert these files - see errors above"
   printf "%s\n" "${cpFail[@]}"
 fi
 
+# show the successful files
 if [[ ${#cpSuccess[@]} -gt 0 ]]; then
   echo "Successfully inserted ${#cpSuccess[@]} files"
 fi
+
+
+# remind the user hwo to use the application
+echo " "
+echo " "
+usage
