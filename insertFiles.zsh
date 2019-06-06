@@ -102,23 +102,34 @@ mySchoolYear=`schoolYear`
 # array of failed and successful copy opperations
 cpFail=()
 cpSuccess=()
-
+notFound=()
 
 # loop through each file provided on the command line
 for each in "${@}"
 do
   # extract the student number from each file
-  stuNumber=`echo ${each} | sed 's/.*[^0-9]\([0-9]\{5,10\}\).*\.pdf$/\1/g'`
-  # add a check for failed grep
+  stuNumber=`echo ${each} | sed 's/.*[^0-9]\([0-9]\{5,10\}\).*/\1/g'`
+  # locate path in cache
   studentDir=`grep $stuNumber "${dirCache}"`
-  newName=${mySchoolYear}_`basename $each`
-  cp ${each} ${studentDir}/${newName}
+  # handle files with student numbers that are not present in Cummulative folder 
   if [[ $? -gt 0 ]]; then
+    notFound()+=($each)
     cpFail+=($each)
+    echo "Could not find matching google drive folder for student:"
+    echo "$each"
   else
-    cpSuccess+=($each)
+    newName=${mySchoolYear}_`basename $each`
+    cp ${each} ${studentDir}/${newName}
+    if [[ $? -gt 0 ]]; then
+      cpFail+=($each)
+    else
+      cpSuccess+=($each)
+    fi
   fi
 done
+
+echo " "
+echo " "
 
 # show the failed files
 if [[ ${#cpFail[@]} -gt 0 ]]; then
@@ -128,11 +139,11 @@ fi
 
 # show the successful files
 if [[ ${#cpSuccess[@]} -gt 0 ]]; then
-  echo "Successfully inserted ${#cpSuccess[@]} files"
+  echo " "
+  echo "Successfully inserted ${#cpSuccess[@]} of ${#[@]} files"
 fi
 
 
 # remind the user how to use the application - useful in platypus application
 echo " "
 echo " "
-usage
