@@ -27,7 +27,7 @@ This application expects one or more PDFs that contain the student number. File 
 
 ### GUI - Drag and Drop
 1. Open the insertFiles.app application 
-  - it may be required to right click on the application and choose "Open" if OS X identifies the application as coming from an unidentified developer
+    - it may be required to right click on the application and choose "Open" if OS X identifies the application as coming from an unidentified developer
 2. Drag one or more PDFs onto the application window
 3. Note any failed files and manually insert them (listed at the end)
 
