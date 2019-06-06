@@ -132,7 +132,7 @@ if [[ ${#cpSuccess[@]} -gt 0 ]]; then
 fi
 
 
-# remind the user hwo to use the application
+# remind the user how to use the application - useful in platypus application
 echo " "
 echo " "
 usage
