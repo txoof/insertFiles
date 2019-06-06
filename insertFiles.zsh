@@ -5,6 +5,10 @@
 # add files that contain student numbers into Google Drive portfolio folders 
 # over google filestream
 
+# load zshell regular expressions module 
+#zmodload zsh/regex
+
+
 # set the shared drive name for the portfolio folder
 mySharedDriveName="ASH Student Cumulative Folders"
 
@@ -13,18 +17,6 @@ mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
 
 
 ####################################################
-
-# full path to shared drive
-mySharedDrive=${mySharedRoot}${mySharedDriveName}/
-
-# check that this file exists before attempting to do anything
-checkFile="checkFile_DO_NOT_REMOVE.txt"
-
-# set the long name and short name for the application
-myLongName='com.txoof.'`basename $0`
-myName=`basename "$0"`
-
-
 schoolYear() {
   # return the school year string based on the current date
   curMonth=`date '+%m'`
@@ -57,10 +49,58 @@ usage() {
 }
 
 
-# main
+#############################
+# get the first command line argument 
+argOne=$1
+gradeFolders=(00-Preschool 00-Transition 00-zKindergarten 01-Grade 02-Grade 03-Grade 04-Grade 05-Grade 06-Grade 07-Grade 08-Grade 09-Grade 10-Grade 11-Grade 12-Grade)
+
+# extract the grade level
+regexp="--([0-9]+)"
+[[ $argOne =~ $regexp ]] 
+gradeLevel=${match[1]}
+gradeIndex=$((gradeLevel+3))
+
+# assume there is no gradeFolder set
+gradeFolder=false
+
+# check set the sub folder for each student based on the argument
+case $argOne in
+  --ps)
+    gradeFolder=$gradeFolders[1]
+    ;;
+  --tk)
+    gradeFolder=$gradeFolders[2]
+    ;;
+  --kg)
+    gradeFolder=$gradeFolders[3]
+    ;;
+  --1|--2|--3|--4|--5|--6|--7|--8|--9|--10|--11|--12)
+    gradeFolder=$gradeFolders[$gradeIndex]
+    ;;
+  *)
+    gradeFolder="/"
+esac
+
+# slice the first element from the array if it is a gradelelvel switch
+if [[ $gradeFolder = false ]]; then
+  args=$@
+  args=${args[@]:1}
+fi
+
+# full path to shared drive
+mySharedDrive=${mySharedRoot}${mySharedDriveName}/
+
+# check that this file exists before attempting to do anything
+checkFile="checkFile_DO_NOT_REMOVE.txt"
+
+# set the long name and short name for the application
+myLongName='com.txoof.'`basename $0`
+myName=`basename "$0"`
+
+echo args: ${args[@]}
 
 # check if there were files were provided as arguments
-if [[ $# -lt 1 ]]; then
+if [[ ${#args[@]} -lt 1 ]]; then
   usage
 fi
 
@@ -105,7 +145,7 @@ cpSuccess=()
 notFound=()
 
 # loop through each file provided on the command line
-for each in "${@}"
+for each in "${args[@]}"
 do
   # extract the student number from each file
   stuNumber=`echo ${each} | sed 's/.*[^0-9]\([0-9]\{5,10\}\).*/\1/g'`
@@ -147,3 +187,5 @@ fi
 # remind the user how to use the application - useful in platypus application
 echo " "
 echo " "
+
+
