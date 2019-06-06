@@ -5,18 +5,14 @@
 # add files that contain student numbers into Google Drive portfolio folders 
 # over google filestream
 
-# load zshell regular expressions module 
-#zmodload zsh/regex
-
-
 # set the shared drive name for the portfolio folder
 mySharedDriveName="ASH Student Cumulative Folders"
 
 # root of Google Shared Drives
 mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
 
-
 ####################################################
+# Functions
 schoolYear() {
   # return the school year string based on the current date
   curMonth=`date '+%m'`
@@ -49,9 +45,11 @@ usage() {
 }
 
 
-#############################
+####################################################
+# main process
 # get the first command line argument 
 argOne=$1
+args=$@
 gradeFolders=(00-Preschool 00-Transition 00-zKindergarten 01-Grade 02-Grade 03-Grade 04-Grade 05-Grade 06-Grade 07-Grade 08-Grade 09-Grade 10-Grade 11-Grade 12-Grade)
 
 # extract the grade level
@@ -83,7 +81,6 @@ esac
 
 # slice the first element from the array if it is a gradelelvel switch
 if [[ $gradeFolder = false ]]; then
-  args=$@
   args=${args[@]:1}
 fi
 
