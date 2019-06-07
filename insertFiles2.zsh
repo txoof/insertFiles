@@ -5,12 +5,10 @@ mySharedDriveName="ASH Student Cumulative Folders"
 # this should be relative to mySharedDrive
 myCumFolder="Student Cumulative Folders (AKA Student Portfolios)"
 
-# root of Google Shared Drives
+# root of Google Shared Drives as provided by FileStream
 mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
 
 
-
-# TODO fix all function variables so they are local variables
 
 ##################################
 # Functions
@@ -64,7 +62,7 @@ Check the following :
      * Google File Stream is running and signed in
      * Check the name of the Google Shared Drive
           * expected name: $mySharedDriveName
-     * $checkFile exists in $mySharedDrive
+     * $sentryFile exists in $mySharedDrive
 
 If '$checkFile' is missing from the Shared drive,
 it can be recreated by opening the terminal app typing the following command:
@@ -77,6 +75,8 @@ exiting"
 }
 
 cacheDirs() {
+  # cache the directories stored in the shared drive
+  
   # create cache directory
   if [[ ! -d $myTempDir ]]; then
     mkdir $myTempDir
@@ -143,6 +143,7 @@ insertFiles() {
   local failCache=()
   local failFileName=()
   local success=()
+  echo inserting files...
   for each in "${fileArgs[@]}"
   do
     local match=()
@@ -152,40 +153,56 @@ insertFiles() {
     # check that there is something that looks like a student number
     if [[ ${#match[1]} -gt 0 ]]; then
       local stuNum=${match[1]}
-      success+=($each)
     else
       failFileName+=($each)
       continue
     fi
 
-    studentDir=$(exec grep $stuNum $dirCache)
-    # check for valid directory
+    # check the cached directories for student numbers
+    studentDir=$(eval grep $stuNum $driveCache)
+    # check for successful completion
+    if [[ $? -gt 0 ]]; then
+      failCache+=($each)
+      continue
+    fi
 
+    # copy the file into the appropriate directory
+    echo cp $each $studentDir/$gradeFolder
+    if [[ $? -gt 0 ]]; then
+      failCopy=+($each)
+      continue
+    fi
 
+    # record each successful insertion here
+    success+=($each)
   done
-  
+
+  # print results for failures and successes
+  # successful insertions
   if [[ ${#success[@]} -gt 0 ]]; then
     printf "\nSuccessfully inserted ${#success[@]} of ${#fileArgs[@]} files\n"
   fi
 
+  # failed due to filename issue
   if [[ ${#failFileName[@]} -gt 0 ]]; then
     printf "\nCould not process the following files - no student number in name:\n"
     printf "%s\n" "${failFileName[@]}"
   fi
 
+  # failed due to student not existing in cache/on google drive
   if [[ ${#failCache[@]} -gt 0 ]]; then
 
     printf "\nCould not process following files - students not found on Shared Drive:\n"
     printf "%s\n" ${failCache[@]}
   fi
 
+  # failed due to a copy problem
   if [[ ${#failCopy[@]} -gt 0 ]]; then
     printf "\nCould not process following files - error copying:\n" 
     printf "%s\n" ${failCopy[@]}
   fi
-
-
 }
+
 ##################################
 # main
 
@@ -222,7 +239,7 @@ driveCache=$myTempDir/sharedDriveCache.txt
 sentryFile="sentryFile_DO_NOT_REMOVE.txt"
 
 # cache the files on the shared drive for faster searching
-cacheDirs
+#cacheDirs
 
 insertFiles $fileArgs
 
