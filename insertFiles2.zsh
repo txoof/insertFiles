@@ -146,14 +146,22 @@ insertFiles() {
   for each in "${fileArgs[@]}"
   do
     local match=()
+    local studentDir=''
     # capture 5 or more consecutive digits in supplied ilename
     [[ $each =~ "([0-9]{5,})" ]]
+    # check that there is something that looks like a student number
     if [[ ${#match[1]} -gt 0 ]]; then
       local stuNum=${match[1]}
       success+=($each)
     else
       failFileName+=($each)
+      continue
     fi
+
+    studentDir=$(exec grep $stuNum $dirCache)
+    # check for valid directory
+
+
   done
   
   if [[ ${#success[@]} -gt 0 ]]; then
