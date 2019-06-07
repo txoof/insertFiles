@@ -138,6 +138,7 @@ execute() {
 }
 
 insertFiles() {
+  # insert files into appropriate folders
   local failCopy=()
   local failCache=()
   local failFileName=()
@@ -149,21 +150,32 @@ insertFiles() {
     [[ $each =~ "([0-9]{5,})" ]]
     if [[ ${#match[1]} -gt 0 ]]; then
       local stuNum=${match[1]}
-      # grep and attempt to insert file into path here
-      studentDir=$(exec grep "$stuNum" "${driveCache}")
-      echo %%%%%%%%%%%%%%%
-      echo $studentDir
-      if [[ $? -gt 0 ]]; then
-        failCache+=$each
-        continue
-      fi
-
-      #echo cp $each to $studentDir
-
+      success+=($each)
     else
-      failFileName+=$each
+      failFileName+=($each)
     fi
   done
+  
+  if [[ ${#success[@]} -gt 0 ]]; then
+    printf "\nSuccessfully inserted ${#success[@]} of ${#fileArgs[@]} files\n"
+  fi
+
+  if [[ ${#failFileName[@]} -gt 0 ]]; then
+    printf "\nCould not process the following files - no student number in name:\n"
+    printf "%s\n" "${failFileName[@]}"
+  fi
+
+  if [[ ${#failCache[@]} -gt 0 ]]; then
+
+    printf "\nCould not process following files - students not found on Shared Drive:\n"
+    printf "%s\n" ${failCache[@]}
+  fi
+
+  if [[ ${#failCopy[@]} -gt 0 ]]; then
+    printf "\nCould not process following files - error copying:\n" 
+    printf "%s\n" ${failCopy[@]}
+  fi
+
 
 }
 ##################################
