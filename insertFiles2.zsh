@@ -29,9 +29,9 @@ schoolYear() {
 
 usage() { 
   # usage instructions
-  if [[ ${#[@]} -lt 1 ]]; then
+#  if [[ -z $1 ]]; then
     printf "$myName inserts multiple test files into a Google Shared drive
-folder based on student numbers 
+folder based on student numbers
 
 command line usage:
 $myName [--<grade sub-folder>] StudentID-File1 FileN-StudentID
@@ -47,8 +47,8 @@ point and click use: drag multiple documents into this window
 
 written by Aaron Ciuffo - aaron.ciuffo@gmail.com
 updates at: https://github.com/txoof/insertFiles"
-    exit 0
-  fi
+  exit 0
+ # fi
 }
 
 checkSentry() {
@@ -96,16 +96,22 @@ cacheDirs() {
 }
 
 parseArgs() {
+
   # parse the command line arguments
   local argOne=$1
   local regexp="--([0-9]+)"
-
   local gradeFolders=(00-Preschool 00-Transition 00-zKindergarten 01-Grade 02-Grade 03-Grade 04-Grade 05-Grade 06-Grade 07-Grade 08-Grade 09-Grade 10-Grade 11-Grade 12-Grade)
 
   # check for an a grade level argument (--ps, --tk, --kg, --1, --12)
   [[ $argOne =~ $regexp ]]
   local gradeLevel=${match[1]}
   local gradeIndex=$((gradeLevel+3))
+
+  # check if there are no arguments given
+  if [[ -z $argOne ]]; then
+    usage
+  fi
+  
 
   case $argOne in
     --ps)
@@ -120,9 +126,9 @@ parseArgs() {
     --1|--2|--3|--4|--5|--6|--7|--8|--9|--10|--11|--12)
       local gradeFolder=$gradeFolders[$gradeIndex]
       ;;
-    *)
-      printf "Unknown option: $argOne\n\n"
-      usage
+#    *)
+#      print "Unknown option: $argOne\n\n"
+#      usage
   esac
 
   echo $gradeFolder
@@ -167,7 +173,7 @@ insertFiles() {
     fi
 
     # copy the file into the appropriate directory
-    echo cp $each $studentDir/$gradeFolder
+    print "cp $each $studentDir/$gradeFolder"
     if [[ $? -gt 0 ]]; then
       failCopy=+($each)
       continue
@@ -212,9 +218,6 @@ myName=${match[1]}
 myLongName="com.txoof."${myName}
 mySharedDrive=${mySharedRoot}/${mySharedDriveName}/${myCumFolder}
 
-# check for arguments - give usage instructions if no arguments
-usage $@
-
 # if gradelevel switch is provided, set a sub folder within the student folder
 gradeFolder=$(parseArgs $1)
 
@@ -225,12 +228,6 @@ else
   fileArgs=($@)
 fi
 
-# check that file arguments were provided
-if [[ ${#fileArgs[@]} -lt 1 ]]; then
-  # if not, give usage instructions
-  usage
-fi
-
 # set temp directory for cache
 myTempDir=$TMPDIR${myLongName}
 driveCache=$myTempDir/sharedDriveCache.txt
@@ -239,7 +236,7 @@ driveCache=$myTempDir/sharedDriveCache.txt
 sentryFile="sentryFile_DO_NOT_REMOVE.txt"
 
 # cache the files on the shared drive for faster searching
-#cacheDirs
+cacheDirs
 
 insertFiles $fileArgs
 
