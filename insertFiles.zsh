@@ -1,25 +1,24 @@
 #!/bin/zsh
-# written by Aaron Ciuffo (aaron.ciuffo@gmail.com)
-# https://github.com/txoof/insertFiles
-
-# add files that contain student numbers into Google Drive portfolio folders 
-# over google filestream
-
 # set the shared drive name for the portfolio folder
 mySharedDriveName="ASH Student Cumulative Folders"
+# the name of the folder(s) that contains all of the cum folders
+# this should be relative to mySharedDrive
+myCumFolder="Student Cumulative Folders (AKA Student Portfolios)"
 
-# root of Google Shared Drives
+# root of Google Shared Drives as provided by FileStream
 mySharedRoot="/Volumes/GoogleDrive/Shared drives/"
 
-####################################################
+
+
+##################################
 # Functions
 schoolYear() {
   # return the school year string based on the current date
-  curMonth=`date '+%m'`
-  curYear=`date '+%Y'`
+  local curMonth=`date '+%m'`
+  local curYear=`date '+%Y'`
   if [[ $curMonth -ge 1 ]] && [[ $curMonth -le 07 ]]; then
-    endYear=$curYear
-    startYear=$((curYear-1))
+    local endYear=$curYear
+    local startYear=$((curYear-1))
   else
     endYear=$((curYear+1))
     startYear=$curYear
@@ -28,161 +27,217 @@ schoolYear() {
   echo "SY$startYear-$endYear"
 }
 
-usage() {
+usage() { 
   # usage instructions
-  echo "$myName: inserts multiple test files into a Google Shared drive" 
-  echo "folder based on student numbers"
-  echo "=========================="
-  echo "command line use:"
-  echo "  $] $myName TEST_LNameFname_000001.pdf TEST_LNameFname_000002.pdf TEST_LNameFname_00000N.pdf"
-  echo "  $] $myName /path/to/*.pdf"
-  echo "=========================="
-  echo "point and click use: drag multiple test result documents into this window"
-  echo ""
-  echo "written by Aaron Ciuffo - aaron.ciuffo@gmail.com"
-  echo "updates at: https://github.com/txoof/insertFiles"
+#  if [[ -z $1 ]]; then
+    printf "$myName inserts multiple test files into a Google Shared drive
+folder based on student numbers
+
+command line usage:
+$myName [--<grade sub-folder>] StudentID-File1 FileN-StudentID
+$myName [--<grade sub-folder>] /path/to/files/.*
+
+Grade Sub Folders: --ps, --tk, --kg, --1..--12
+
+EXAMPLE:
+Insert all PDFs in ~/Downloads/grade3 into 03-Grade sub folders
+$] $myName --3 ~/Downloads/grade3/*.pdf
+
+point and click use: drag multiple documents into this window
+
+written by Aaron Ciuffo - aaron.ciuffo@gmail.com
+updates at: https://github.com/txoof/insertFiles"
   exit 0
+ # fi
 }
 
+checkSentry() {
+  # check for sentry file on Google Shared drive
+  # exit out if sentry file is missing
+  if [[ ! -f $mySharedRoot/$mySharedDriveName/$sentryFile ]]; then
+printf "FATAL ERROR
+Sentry file is missing from $mySharedDriveName
 
-####################################################
-# main process
-# get the first command line argument 
-argOne=$1
-args=$@
-gradeFolders=(00-Preschool 00-Transition 00-zKindergarten 01-Grade 02-Grade 03-Grade 04-Grade 05-Grade 06-Grade 07-Grade 08-Grade 09-Grade 10-Grade 11-Grade 12-Grade)
+Check the following :
+     * Google File Stream is running and signed in
+     * Check the name of the Google Shared Drive
+          * expected name: $mySharedDriveName
+     * $sentryFile exists in $mySharedDrive
 
-# extract the grade level
-regexp="--([0-9]+)"
-[[ $argOne =~ $regexp ]] 
-gradeLevel=${match[1]}
-gradeIndex=$((gradeLevel+3))
+If '$checkFile' is missing from the Shared drive,
+it can be recreated by opening the terminal app typing the following command:
 
-# assume there is no gradeFolder set
-gradeFolder=false
+touch \"$mySharedDrive/$sentryFile\"
 
-# check set the sub folder for each student based on the argument
-case $argOne in
-  --ps)
-    gradeFolder=$gradeFolders[1]
-    ;;
-  --tk)
-    gradeFolder=$gradeFolders[2]
-    ;;
-  --kg)
-    gradeFolder=$gradeFolders[3]
-    ;;
-  --1|--2|--3|--4|--5|--6|--7|--8|--9|--10|--11|--12)
-    gradeFolder=$gradeFolders[$gradeIndex]
-    ;;
-  *)
-    gradeFolder="/"
-esac
-
-# slice the first element from the array if it is a gradelelvel switch
-if [[ $gradeFolder = false ]]; then
-  args=${args[@]:1}
-fi
-
-# full path to shared drive
-mySharedDrive=${mySharedRoot}${mySharedDriveName}/
-
-# check that this file exists before attempting to do anything
-checkFile="checkFile_DO_NOT_REMOVE.txt"
-
-# set the long name and short name for the application
-myLongName='com.txoof.'`basename $0`
-myName=`basename "$0"`
-
-echo args: ${args[@]}
-
-# check if there were files were provided as arguments
-if [[ ${#args[@]} -lt 1 ]]; then
-  usage
-fi
-
-# a check file resides in the root of the team drive
-# if the check file is missing, exit out
-if [[ ! -f $mySharedDrive/$checkFile ]]; then
-  echo "FATAL ERROR!"
-  echo "Check file is missing from $mySharedDriveName"
-  echo " "
-  echo "Check the following :"
-  echo "     * Google File Stream is running and signed in"
-  echo "     * Check the name of the Google Shared Drive"
-  echo "          * expected name: $mySharedDriveName"
-  echo "     * $checkFile exists in $mySharedDrive"
-  echo " "
-  echo "If '$checkFile' is missing from the Shared drive,"
-  echo "it can be recreated by opening the terminal app typing the following command:"
-  echo " "
-  echo "touch $mySharedDrive/$checkFile"
-  echo " "
-  echo "exiting - cannot continue without checkfile"
-  exit 0
-fi
-
-
-# create a directory cache of folders stored in sharedDrive
-myTempDir=$TMPDIR${myLongName}
-dirCache=$myTempDir/sharedDriveCache.txt
-
-if [[ ! -d $myTempDir ]]; then
-  mkdir $myTempDir
-fi
-
-find "${mySharedDrive}" -maxdepth 3 -type d > $dirCache
-
-# set the current school year
-mySchoolYear=`schoolYear`
-
-# array of failed and successful copy opperations
-cpFail=()
-cpSuccess=()
-notFound=()
-
-# loop through each file provided on the command line
-for each in "${args[@]}"
-do
-  # extract the student number from each file
-  stuNumber=`echo ${each} | sed 's/.*[^0-9]\([0-9]\{5,10\}\).*/\1/g'`
-  # locate path in cache
-  studentDir=`grep $stuNumber "${dirCache}"`
-  # handle files with student numbers that are not present in Cummulative folder 
-  if [[ $? -gt 0 ]]; then
-    notFound()+=($each)
-    cpFail+=($each)
-    echo "Could not find matching google drive folder for student:"
-    echo "$each"
-  else
-    newName=${mySchoolYear}_`basename $each`
-    cp ${each} ${studentDir}/${newName}
-    if [[ $? -gt 0 ]]; then
-      cpFail+=($each)
-    else
-      cpSuccess+=($each)
-    fi
+exiting"
+    exit 0
   fi
-done
+}
 
-echo " "
-echo " "
+cacheDirs() {
+  # cache the directories stored in the shared drive
+  
+  # create cache directory
+  if [[ ! -d $myTempDir ]]; then
+    mkdir $myTempDir
+  fi
 
-# show the failed files
-if [[ ${#cpFail[@]} -gt 0 ]]; then
-  echo "Failed to insert these files - see errors above"
-  printf "%s\n" "${cpFail[@]}"
+  # check for sentry file on shared drive
+  checkSentry
+
+  # create the cache file
+  find "${mySharedDrive}" -maxdepth 2 -type d > $driveCache
+  if [[ $? -gt 0 ]]; then
+    echo "caching of remote directories failed"
+    echo "See $driveCache for more details"
+    echo "exiting"
+    exit 1
+  fi
+}
+
+parseArgs() {
+
+  # parse the command line arguments
+  local argOne=$1
+  local regexp="--([0-9]+)"
+  local gradeFolders=(00-Preschool 00-Transition 00-zKindergarten 01-Grade 02-Grade 03-Grade 04-Grade 05-Grade 06-Grade 07-Grade 08-Grade 09-Grade 10-Grade 11-Grade 12-Grade)
+
+  # check for an a grade level argument (--ps, --tk, --kg, --1, --12)
+  [[ $argOne =~ $regexp ]]
+  local gradeLevel=${match[1]}
+  local gradeIndex=$((gradeLevel+3))
+
+  # check if there are no arguments given
+  if [[ -z $argOne ]]; then
+    usage
+  fi
+  
+
+  case $argOne in
+    --ps)
+      local gradeFolder=$gradeFolders[1]
+      ;;
+    --tk)
+      local gradeFolder=$gradeFolders[2]
+      ;;
+    --kg)
+      local gradeFolder=$gradeFolders[3]
+      ;;
+    --1|--2|--3|--4|--5|--6|--7|--8|--9|--10|--11|--12)
+      local gradeFolder=$gradeFolders[$gradeIndex]
+      ;;
+#    *)
+#      print "Unknown option: $argOne\n\n"
+#      usage
+  esac
+
+  echo $gradeFolder
+}
+
+execute() {
+  "$@"
+  local mystat=$?
+  if [ $mystat -ne 0 ]; then
+    echo "error with $1" >&2
+  fi
+  echo $mystat
+}
+
+insertFiles() {
+  # insert files into appropriate folders
+  local failCopy=()
+  local failCache=()
+  local failFileName=()
+  local success=()
+  echo inserting files...
+  for each in "${fileArgs[@]}"
+  do
+    local match=()
+    local studentDir=''
+    # capture 5 or more consecutive digits in supplied ilename
+    [[ $each =~ "([0-9]{5,})" ]]
+    # check that there is something that looks like a student number
+    if [[ ${#match[1]} -gt 0 ]]; then
+      local stuNum=${match[1]}
+    else
+      failFileName+=($each)
+      continue
+    fi
+
+    # check the cached directories for student numbers
+    studentDir=$(eval grep $stuNum $driveCache)
+    # check for successful completion
+    if [[ $? -gt 0 ]]; then
+      failCache+=($each)
+      continue
+    fi
+
+    # copy the file into the appropriate directory
+    print "cp $each $studentDir/$gradeFolder"
+    if [[ $? -gt 0 ]]; then
+      failCopy=+($each)
+      continue
+    fi
+
+    # record each successful insertion here
+    success+=($each)
+  done
+
+  # print results for failures and successes
+  # successful insertions
+  if [[ ${#success[@]} -gt 0 ]]; then
+    printf "\nSuccessfully inserted ${#success[@]} of ${#fileArgs[@]} files\n"
+  fi
+
+  # failed due to filename issue
+  if [[ ${#failFileName[@]} -gt 0 ]]; then
+    printf "\nCould not process the following files - no student number in name:\n"
+    printf "%s\n" "${failFileName[@]}"
+  fi
+
+  # failed due to student not existing in cache/on google drive
+  if [[ ${#failCache[@]} -gt 0 ]]; then
+
+    printf "\nCould not process following files - students not found on Shared Drive:\n"
+    printf "%s\n" ${failCache[@]}
+  fi
+
+  # failed due to a copy problem
+  if [[ ${#failCopy[@]} -gt 0 ]]; then
+    printf "\nCould not process following files - error copying:\n"
+    printf "%s\n" ${failCopy[@]}
+  fi
+}
+
+##################################
+# main
+
+# set the program  name
+[[ `basename ${0}` =~ "(^.*)\..*" ]]
+myName=${match[1]}
+myLongName="com.txoof."${myName}
+mySharedDrive=${mySharedRoot}/${mySharedDriveName}/${myCumFolder}
+
+# if gradelevel switch is provided, set a sub folder within the student folder
+gradeFolder=$(parseArgs $1)
+
+# discard switches; keep file arguments
+if [[ $1 =~ "^--.*" ]]; then
+  fileArgs=(${@:2})
+else
+  fileArgs=($@)
 fi
 
-# show the successful files
-if [[ ${#cpSuccess[@]} -gt 0 ]]; then
-  echo " "
-  echo "Successfully inserted ${#cpSuccess[@]} of ${#[@]} files"
-fi
+# set temp directory for cache
+myTempDir=$TMPDIR${myLongName}
+driveCache=$myTempDir/sharedDriveCache.txt
+# sentry file that indicates this is the proper Shared drive
+# if file is missing, bail out
+sentryFile="sentryFile_DO_NOT_REMOVE.txt"
 
+# cache the files on the shared drive for faster searching
+cacheDirs
 
-# remind the user how to use the application - useful in platypus application
-echo " "
-echo " "
+insertFiles $fileArgs
 
 
