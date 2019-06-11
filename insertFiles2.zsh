@@ -198,7 +198,7 @@ insertFiles() {
 
   # failed due to a copy problem
   if [[ ${#failCopy[@]} -gt 0 ]]; then
-    printf "\nCould not process following files - error copying:\n" 
+    printf "\nCould not process following files - error copying:\n"
     printf "%s\n" ${failCopy[@]}
   fi
 }
