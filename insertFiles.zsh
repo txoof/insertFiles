@@ -96,7 +96,6 @@ cacheDirs() {
 }
 
 parseArgs() {
-
   # parse the command line arguments
   local argOne=$1
   local regexp="--([0-9]+)"
@@ -106,12 +105,7 @@ parseArgs() {
   [[ $argOne =~ $regexp ]]
   local gradeLevel=${match[1]}
   local gradeIndex=$((gradeLevel+3))
-
-  # check if there are no arguments given
-  if [[ -z $argOne ]]; then
-    usage
-  fi
-  
+  local gradeFolder="/"
 
   case $argOne in
     --ps)
@@ -149,7 +143,7 @@ insertFiles() {
   local failCache=()
   local failFileName=()
   local success=()
-  echo inserting files...
+  print "Inserting ${#fileArgs[@]} files into $gradeFolder folder for each student: \n"
   for each in "${fileArgs[@]}"
   do
     local match=()
@@ -173,7 +167,8 @@ insertFiles() {
     fi
 
     # copy the file into the appropriate directory
-    print "cp $each $studentDir/$gradeFolder"
+    print "inserting $each \n"
+    # cp $each $studentDir/$gradeFolder
     if [[ $? -gt 0 ]]; then
       failCopy=+($each)
       continue
@@ -219,7 +214,11 @@ myLongName="com.txoof."${myName}
 mySharedDrive=${mySharedRoot}/${mySharedDriveName}/${myCumFolder}
 
 # if gradelevel switch is provided, set a sub folder within the student folder
+if [[ -z $1 ]]; then
+  usage
+fi
 gradeFolder=$(parseArgs $1)
+
 
 # discard switches; keep file arguments
 if [[ $1 =~ "^--.*" ]]; then

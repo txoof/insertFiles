@@ -1,0 +1,5 @@
+This file is critical for the opperation of the insertFiles program run by the curriculum office. 
+
+DO NOT MOVE, ALTER OR REMOVE THIS FILE.
+
+For more information see: https://github.com/txoof/insertFiles

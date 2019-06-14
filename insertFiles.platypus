@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AcceptsFiles</key>
-	<false/>
+	<true/>
 	<key>AcceptsText</key>
 	<false/>
 	<key>Authentication</key>
@@ -17,7 +17,7 @@
 	<key>DeclareService</key>
 	<false/>
 	<key>Destination</key>
-	<string>/Users/aaronciuffo/Desktop/Application.app</string>
+	<string>/Users/aciuffo/Desktop/Application.app</string>
 	<key>DevelopmentVersion</key>
 	<false/>
 	<key>DocIconPath</key>
@@ -27,9 +27,9 @@
 	<key>ExecutablePath</key>
 	<string>/usr/local/share/platypus/ScriptExec</string>
 	<key>IconPath</key>
-	<string>/Applications/Platypus.app/Contents/Resources/PlatypusDefault.icns</string>
+	<string>/Users/aciuffo/Library/Application Support/Platypus/PlatypusIcon-13516.icns</string>
 	<key>Identifier</key>
-	<string>com.txoof.InsertFiles</string>
+	<string>org.aciuffo.InsertFiles</string>
 	<key>InterfaceType</key>
 	<string>Text Window</string>
 	<key>InterpreterArgs</key>
@@ -53,7 +53,7 @@
 	<key>ScriptArgs</key>
 	<array/>
 	<key>ScriptPath</key>
-	<string>/Users/aaronciuffo/src/insertFiles/insertFiles.zsh</string>
+	<string>/Users/aciuffo/Documents/src/insertFiles/insertFiles.zsh</string>
 	<key>StatusItemDisplayType</key>
 	<string>Text</string>
 	<key>StatusItemIcon</key>
