@@ -9,7 +9,7 @@ Any files that failed to copy will be listed.
 ## Installation and Configuration Requirements
 * Google Filestream
   * Filestream is signed in with an account with editing rights to the Student Cumulative folders Shared Drive
-* This script or the associated Platypus application
+* The insertFiles.zsh script
 
 ## Use
 This application expects one or more files that contain the student number. File names can be in any configuration, but **must ONLY contain the student number once**. 
