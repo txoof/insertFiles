@@ -1,7 +1,7 @@
 # insertFiles
 Distribute multiple files into appropriate cumulative student folders on a google Shared drive (formerly Team Drive)
 
-insertFiles.app accepts one or more files that contain a PowerSchool student number; the supplied files are copied into the student portfolio folders and are prepended with the current school year. The supplied file `SRP_DoeJohn_023451.pdf` will be inserted into John Doe's portfolio folder.
+insertFiles.app accepts one or more files that contain a PowerSchool student number; the supplied files are copied into the student portfolio folder; any files with the same name will be updated with the newest upload. The supplied file `SRP_DoeJohn_023451.pdf` will be inserted into John Doe's portfolio folder.
 
 
 Any files that failed to copy will be listed.
@@ -33,11 +33,11 @@ This application expects one or more files that contain the student number in th
 * `John Doe.pdf` ↢ No student number
 
 ### Examples
-*  Insert files into the root folder of each student - this is usefulf for MAP tests
-   -  `$ insertFiles.zsh File1_555663.pdf File2_334567.pdf FileN_223416.pdf`
+*  Use the command below to insert individual files into the root folder of each student - this is usefulf for MAP tests
+   -  `./insertFiles.zsh File1_555663.pdf File2_334567.pdf FileN_223416.pdf`
    -  This command will add File1_555663 into the Shared Drive (formerly Team Drive) ASH Student Cumulative Folders/Student Cumlative Folders (AKA Student Portfolios)/Class of 2099/Washington, George - 555663/
-* Insert files into a GRADE level folder
-   -  `$ insertFiles.zsh --4 ~/Downloads/grade 4 Report Cards/*.pdf`
+* Insert all PDF files in folder "grade 4 Report Cards"  into a the 04-Grade folder
+   -  `./insertFiles.zsh --4 ~/Downloads/grade 4 Report Cards/*.pdf`
    -  This command will add each individual report card stored in the Downloads/grade 4 Report Cards/ folder into the folder ASH Student Cumulative Folders/Student Cumlative Folders (AKA Student Portfolios)/Class of 2099/Washington, George - 555663/04-Grade
    
 ## Trouble Shooting
