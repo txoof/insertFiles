@@ -7,7 +7,7 @@ insertFiles.app accepts one or more files that contain a PowerSchool student num
 Any files that failed to copy will be listed.
 
 ## Installation and Configuration Requirements
-* Google Filestream
+* [Google Filestream](https://support.google.com/a/answer/7491144?hl=en)
   * Filestream is signed in with an account with editing rights to the Student Cumulative folders Shared Drive
 * The insertFiles.zsh script
 
