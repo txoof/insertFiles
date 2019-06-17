@@ -65,9 +65,10 @@ Check the following :
      * $sentryFile exists in $mySharedDrive
 
 If '$sentryFile' is missing from the Shared drive,
-it can be recreated by opening the terminal app typing or pasting in the following command:
+it can be recreated by opening the terminal app typing or pasting in 
+the following command:
 
-touch \"$mySharedDrive/$sentryFile\"
+touch \"$mySharedRoot/$mySharedDriveName/$sentryFile\"
 
 exiting"
     exit 0
