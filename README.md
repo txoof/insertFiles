@@ -12,7 +12,7 @@ Any files that failed to copy will be listed.
 * The insertFiles.zsh script
 
 ## Use
-This application expects one or more files that contain the student number. File names can be in any configuration, but **must ONLY contain the student number once**. 
+This application expects one or more files that contain the student number in the FILE NAME. File names can be in any configuration, but **must ONLY contain the student number once**. 
 ### Command Line Use
 `./insertFiles.zsh [--GradeLevel (optional)] /Folder/With/Files/*.foo`
 
