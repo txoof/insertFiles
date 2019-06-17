@@ -30,25 +30,32 @@ schoolYear() {
 usage() { 
   # usage instructions
 #  if [[ -z $1 ]]; then
-    printf "$myName inserts multiple test files into a Google Shared drive
-folder based on student numbers
+    printf "$myName adds multiple files into a Google Shared drive
+folder based on student numbers in the file names.
 
-command line usage:
-$myName [--<grade sub-folder>] StudentID-File1 FileN-StudentID
-$myName [--<grade sub-folder>] /path/to/files/.*
-
-Grade Sub Folders: --ps, --tk, --kg, --1..--12
-
-EXAMPLE:
-Insert all PDFs in ~/Downloads/grade3 into 03-Grade sub folders
-$] $myName --3 ~/Downloads/grade3/*.pdf
-
-point and click use: drag multiple documents into this window
+########################
+Drag one or more files into this window to insert into Google Shared drive
+cumulative folders.
+########################
 
 written by Aaron Ciuffo - aaron.ciuffo@gmail.com
-updates at: https://github.com/txoof/insertFiles"
+updates at: https://github.com/txoof/insertFiles\n\n"
+
+
+#command line usage:
+#$myName [--<grade sub-folder>] StudentID-File1 FileN-StudentID
+#$myName [--<grade sub-folder>] /path/to/files/.*
+
+#Grade Sub Folders: --ps, --tk, --kg, --1..--12
+
+#EXAMPLE:
+#Insert all PDFs in ~/Downloads/grade3 into 03-Grade sub folders
+#$] $myName --3 ~/Downloads/grade3/*.pdf
+
+#Insertr all PDFs in ~/Downloads/G3-Map_results into student folders:
+#$] $myName ~/Downloads/G3-Map_results/*.pdf 
+
   exit 0
- # fi
 }
 
 checkSentry() {
@@ -65,7 +72,7 @@ Check the following :
      * $sentryFile exists in $mySharedDrive
 
 If '$sentryFile' is missing from the Shared drive,
-it can be recreated by opening the terminal app typing or pasting in 
+it can be recreated by opening the terminal app typing or pasting in
 the following command:
 
 touch \"$mySharedRoot/$mySharedDriveName/$sentryFile\"
@@ -77,7 +84,7 @@ exiting"
 
 cacheDirs() {
   # cache the directories stored in the shared drive
-  
+  echo Creating cache file: $myTempDir
   # create cache directory
   if [[ ! -d $myTempDir ]]; then
     mkdir $myTempDir
@@ -226,6 +233,15 @@ else
   fileArgs=($@)
 fi
 
+
+# print usage instructions when run from platypus 
+if [[ ${#fileArgs} -lt 1 ]]; then
+  printf "=================================================
+INSERT FILES FOR GRADE $gradeFolder STUDENTS ONLY
+=================================================\n\n"
+  usage
+fi
+
 # sentry file that indicates this is the proper Shared drive
 # if file is missing, bail out
 sentryFile="sentryFile_DO_NOT_REMOVE.txt"
@@ -238,6 +254,7 @@ myTempDir=$TMPDIR${myLongName}
 driveCache=$myTempDir/sharedDriveCache.txt
 
 # cache the files on the shared drive for faster searching
+cacheDirs
 
 insertFiles $fileArgs
 
