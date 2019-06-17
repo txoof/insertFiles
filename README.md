@@ -100,3 +100,23 @@ Desktop/   Documents/ Downloads/
 #### Use valid Grade Level Options:
 1.   Make sure you supply a valid grade level folder option FIRST. It must be the first option after the command: `./insertFiles.zsh --3  ~/Downloads/grade\ 3 reports/*.pdf`
 2. Valid Grade level options: --ps, --tk, --kg, --1, --2, --3 .. --12
+
+### Problem receive the following message after running program:
+```
+Could not process the following files - no student number in name:
+/Users/aciuffo/Downloads/g3test/foo.pdf
+```
+### Solution:
+1.  One or more of the PDFs do not have valid looking student numbers in the file name. The file "`foo.pdf`" is missing a student number all together. Rename the file to include the student number.
+
+### Problem receive the following message after running program:
+```
+Could not process following files - students not found on Shared Drive:
+/Users/aciuffo/Downloads/g3test/SPR_van KattenBillie_5033479.pdf
+```
+### Solution
+1.  Only students with cumulative/portfolio folders on the Google Shared Drive can be processed. Billie van Katten (SN 5033479) does not have a student folder.
+2.  Create a folder for Billie van Katten and try again with the following command: `./insertFiles.zsh /Users/aciuffo/Downloads/g3test/SPR_vanKattenBillie_5033479.pdf`
+   * This will only retry the failed file
+
+
