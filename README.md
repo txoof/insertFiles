@@ -98,5 +98,5 @@ Desktop/   Documents/ Downloads/
 5.  Add `*.pdf` at the end of the line to select all (\* = ALL) the PDFs in that folder: `./insertFiles.zsh ~/Downloads/grade\ 3 MAP Results/*.pdf`
 
 #### Use valid Grade Level Options:
-1.   Make sure you supply a valid grade level folder option FIRST. It must be the first option after the command: ```./insertFiles.zsh --3  ~/Downloads/grade\ 3 reports/*.pdf`
+1.   Make sure you supply a valid grade level folder option FIRST. It must be the first option after the command: `./insertFiles.zsh --3  ~/Downloads/grade\ 3 reports/*.pdf`
 2. Valid Grade level options: --ps, --tk, --kg, --1, --2, --3 .. --12
