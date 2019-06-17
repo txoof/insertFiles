@@ -13,6 +13,14 @@ Any files that failed to copy will be listed.
 
 ## Use
 This application expects one or more files that contain the student number. File names can be in any configuration, but **must ONLY contain the student number once**. 
+### Command Line Use
+`./insertFiles.zsh [--GradeLevel (optional)] /Folder/With/Files/*.foo`
+
+### Valid GradeLevel options:
+* --ps (preschool)
+* --tk (transition kindergarden)
+* --kg (kindergarten)
+* --1 (grade 1)..--12 (grade 12)
 
 **Valid Filename Formats**
 * `SPR_DoeJohn_324566.pdf` 
@@ -23,21 +31,6 @@ This application expects one or more files that contain the student number. File
 **Invalid Filename Formats**
 * `20182019_ISA Test Results_443556.pdf` ↢ Too many numbers
 * `John Doe.pdf` ↢ No student number
-
-### GUI - Drag and Drop
-1. Open the insertFiles.app application 
-    - it may be required to right click on the application and choose "Open" if OS X identifies the application as coming from an unidentified developer
-2. Drag one or more files onto the application window
-3. Note any failed files and manually insert them (listed at the end)
-
-## Command Line
-`insertFiles.zsh [--GradeLevel (optional)] /Folder/With/Files/*.foo`
-
-### Valid GradeLevel options:
-* --ps (preschool)
-* --tk (transition kindergarden)
-* --kg (kindergarten)
-* --1 (grade 1)..--12 (grade 12)
 
 ### Examples
 *  Insert files into the root folder of each student - this is usefulf for MAP tests
