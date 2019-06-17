@@ -89,9 +89,14 @@ Grade Sub Folders: --ps, --tk, --kg, --1..--12
 1.  Make sure you are supplying a folder of files for the program to work with. Try typing or pasting the following command
    *  `./insertFiles.zsh ~/D`
 2.  Then press the TAB key (⇥) twice to show all of the possible folders that start with "D":
-   *  ```
-   $ ./insertFiles.zsh ~/D
-   Desktop/   Documents/ Downloads/
-   ```
-   
+```
+$ ./insertFiles.zsh ~/D
 Desktop/   Documents/ Downloads/
+```
+3.  Type a few more characters and press the TAB key again to complete the line. 
+4.  Repeat steps 2 and 3 until you have the right folder.
+5.  Add `*.pdf` at the end of the line to select all (\* = ALL) the PDFs in that folder: `./insertFiles.zsh ~/Downloads/grade\ 3 MAP Results/*.pdf`
+
+#### Use valid Grade Level Options:
+1.   Make sure you supply a valid grade level folder option FIRST. It must be the first option after the command: ```./insertFiles.zsh --3  ~/Downloads/grade\ 3 reports/*.pdf`
+2. Valid Grade level options: --ps, --tk, --kg, --1, --2, --3 .. --12
