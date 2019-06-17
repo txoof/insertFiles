@@ -56,4 +56,6 @@ Sentry file is missing from ASH Student Cumulative Folders`
 There is a file that exists in the Shared drive (formerly team drive) called "`sentryFile_DO_NOT_REMOVE.txt`" The program will not opperate if the file is missing. 
 
 ### Solutions
-1.  Check that Google File Stream is running 
+1.  Check that Google File Stream is running - look for the FileStream icon:
+   * ![FileStream Icon](Resources/filestream_icon.png)
+2. 
