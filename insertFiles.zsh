@@ -55,7 +55,7 @@ checkSentry() {
   # check for sentry file on Google Shared drive
   # exit out if sentry file is missing
   if [[ ! -f $mySharedRoot/$mySharedDriveName/$sentryFile ]]; then
-printf "FATAL ERROR
+    printf "FATAL ERROR
 Sentry file is missing from $mySharedDriveName
 
 Check the following :
@@ -64,8 +64,8 @@ Check the following :
           * expected name: $mySharedDriveName
      * $sentryFile exists in $mySharedDrive
 
-If '$checkFile' is missing from the Shared drive,
-it can be recreated by opening the terminal app typing the following command:
+If '$sentryFile' is missing from the Shared drive,
+it can be recreated by opening the terminal app typing or pasting in the following command:
 
 touch \"$mySharedDrive/$sentryFile\"
 
@@ -82,8 +82,6 @@ cacheDirs() {
     mkdir $myTempDir
   fi
 
-  # check for sentry file on shared drive
-  checkSentry
 
   # create the cache file
   find "${mySharedDrive}" -maxdepth 2 -type d > $driveCache
@@ -227,15 +225,18 @@ else
   fileArgs=($@)
 fi
 
-# set temp directory for cache
-myTempDir=$TMPDIR${myLongName}
-driveCache=$myTempDir/sharedDriveCache.txt
 # sentry file that indicates this is the proper Shared drive
 # if file is missing, bail out
 sentryFile="sentryFile_DO_NOT_REMOVE.txt"
+# check for sentry file on shared drive
+echo checking sentry file
+checkSentry
+
+# set temp directory for cache
+myTempDir=$TMPDIR${myLongName}
+driveCache=$myTempDir/sharedDriveCache.txt
 
 # cache the files on the shared drive for faster searching
-cacheDirs
 
 insertFiles $fileArgs
 
