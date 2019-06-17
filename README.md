@@ -33,6 +33,8 @@ This application expects one or more files that contain the student number in th
 * `John Doe.pdf` ↢ No student number
 
 ### Examples
+*  Use the command below to insert all PDF files in the folder ~/Downloads/Grade-5-Map-Results/ into each student's Cumulative folder:
+   - `./insertfiles.zsh ~/Downloads/Grade5-Map-Results/*.pdf`
 *  Use the command below to insert individual files into the root folder of each student - this is usefulf for MAP tests
    -  `./insertFiles.zsh File1_555663.pdf File2_334567.pdf FileN_223416.pdf`
    -  This command will add File1_555663 into the Shared Drive (formerly Team Drive) ASH Student Cumulative Folders/Student Cumlative Folders (AKA Student Portfolios)/Class of 2099/Washington, George - 555663/
