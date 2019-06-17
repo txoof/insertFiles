@@ -48,14 +48,50 @@ This application expects one or more files that contain the student number. File
    -  This command will add each individual report card stored in the Downloads/grade 4 Report Cards/ folder into the folder ASH Student Cumulative Folders/Student Cumlative Folders (AKA Student Portfolios)/Class of 2099/Washington, George - 555663/04-Grade
    
 ## Trouble Shooting
-### Problem:
-Recieve the following message:
+### Problem: Recieve the following message
 `FATAL ERROR
 Sentry file is missing from ASH Student Cumulative Folders`
 
 There is a file that exists in the Shared drive (formerly team drive) called "`sentryFile_DO_NOT_REMOVE.txt`" The program will not opperate if the file is missing. 
 
 ### Solutions
-1.  Check that Google File Stream is running - look for the FileStream icon:
-   * ![FileStream Icon](Resources/filestream_icon.png)
-2. 
+#### Check that Filestream is running
+1.  Look for the FileStream icon in the menu bar at the top of the screen ![FileStream Icon](Resources/filestream_icon.png)
+2.  If the icon does not appear, use finder to locate the FileStream application and launch it 
+
+#### Check that you are signed in
+1.  Click on the FileStream icon and check that you are signed in with an account that can access the appropriate Shared Drive
+![FileStream Signed In](Resources/filestream_signedin.png)
+
+#### Check that the Sentry File Exists
+1.  Browse to the Shared Drive on google Drive and check if the file "`sentryFile_DO_NOT_REMOVE.txt`" is located in the root of the Shared Drive.
+2.  If the file is missing or does not have the proper name, recreate it using the following command from a Terminal prompt:
+   * touch "/Volumes/GoogleDrive/Shared drives//ASH Student Cumulative Folders/sentryFile_DO_NOT_REMOVE.txt"
+   
+#### Check if the Shared Drive name changed
+1.  The program expects the Shared Drive to be named exactly "ASH Student Cumulative Folders". 
+2.  Either update The program or the shared drive name to fix this.
+
+
+### Problem recieve the following message:
+```
+insertFiles inserts multiple test files into a Google Shared drive
+folder based on student numbers
+
+command line usage:
+insertFiles [--<grade sub-folder>] StudentID-File1 FileN-StudentID
+insertFiles [--<grade sub-folder>] /path/to/files/.*
+
+Grade Sub Folders: --ps, --tk, --kg, --1..--12
+```
+### Solutions:
+#### Supply files for the program to work with:
+1.  Make sure you are supplying a folder of files for the program to work with. Try typing or pasting the following command
+   *  `./insertFiles.zsh ~/D`
+2.  Then press the TAB key (⇥) twice to show all of the possible folders that start with "D":
+   *  ```
+   $ ./insertFiles.zsh ~/D
+   Desktop/   Documents/ Downloads/
+   ```
+   
+Desktop/   Documents/ Downloads/
