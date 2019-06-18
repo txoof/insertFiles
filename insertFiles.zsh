@@ -154,7 +154,7 @@ insertFiles() {
   do
     local match=()
     local studentDir=''
-    # capture 5 or more consecutive digits in supplied ilename
+    # capture 5 or more consecutive digits in supplied filename
     [[ $each =~ "([0-9]{5,})" ]]
     # check that there is something that looks like a student number
     if [[ ${#match[1]} -gt 0 ]]; then
@@ -173,11 +173,12 @@ insertFiles() {
     fi
 
     # copy the file into the appropriate directory
-    print "inserting $each"
+    #print "inserting $each"
     cp $each $studentDir/$gradeFolder
+
     if [[ $? -gt 0 ]]; then
-      failCopy=+($each)
-      continue
+      failCopy+=($each)
+    continue
     fi
 
     # record each successful insertion here
