@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.42</string>
+	<string>444.39</string>
 	<key>AMApplicationVersion</key>
 	<string>2.9</string>
 	<key>AMDocumentVersion</key>
@@ -100,12 +100,10 @@
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<false/>
 				<key>location</key>
-				<string>424.500000:43.000000</string>
+				<string>438.500000:43.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -204,12 +202,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:468.000000</string>
+				<string>438.500000:288.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -314,12 +310,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:753.000000</string>
+				<string>438.500000:393.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -482,12 +476,10 @@ end run</string>
 						<string>3</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:1088.000000</string>
+				<string>438.500000:548.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -551,7 +543,7 @@ end run</string>
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
+				<true/>
 				<key>CanShowWhenRun</key>
 				<true/>
 				<key>Category</key>
@@ -598,12 +590,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:1373.000000</string>
+				<string>438.500000:653.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -712,12 +702,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:1655.000000</string>
+				<string>438.500000:755.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -765,7 +753,7 @@ end run</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run {input, parameters}		set Option to item 2 of input as text	set fList to the POSIX path of item 1 of input as text	set args to Option &amp; " " &amp; fList &amp; "/*"		return argsend run</string>
+					<string>on run {input, parameters}		set Option to item 2 of input as text	set fList to the POSIX path of item 1 of input as text		return {Option, fList}end run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -818,12 +806,10 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:2080.000000</string>
+				<string>438.500000:1000.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -993,12 +979,10 @@ done
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:2442.000000</string>
+				<string>438.500000:1182.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1062,7 +1046,7 @@ done
 				<key>CFBundleVersion</key>
 				<string>1.0.2</string>
 				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
+				<true/>
 				<key>CanShowWhenRun</key>
 				<true/>
 				<key>Category</key>
@@ -1105,12 +1089,10 @@ done
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:2599.000000</string>
+				<string>438.500000:1287.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1277,12 +1259,10 @@ done
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:2795.000000</string>
+				<string>438.500000:1483.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1709,12 +1689,10 @@ insertFiles $fileArgs
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>424.500000:3029.000000</string>
+				<string>438.500000:1665.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1724,75 +1702,75 @@ insertFiles $fileArgs
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>04AD897D-4A0B-4052-948C-82FC14EE1D06</key>
-		<dict>
-			<key>from</key>
-			<string>2193DF04-B44E-4A7F-8F2B-D86C5FF7559A - 2193DF04-B44E-4A7F-8F2B-D86C5FF7559A</string>
-			<key>to</key>
-			<string>393294FB-3F94-4973-8673-67023A76264C - 393294FB-3F94-4973-8673-67023A76264C</string>
-		</dict>
-		<key>0FF85E17-F2BE-4BD7-9BAA-50A73DB931B1</key>
-		<dict>
-			<key>from</key>
-			<string>5D24A92A-5F8B-46F7-9453-4E7AF96C567B - 5D24A92A-5F8B-46F7-9453-4E7AF96C567B</string>
-			<key>to</key>
-			<string>23AEEEBE-B729-4D86-95E6-0D6416E4CF19 - 23AEEEBE-B729-4D86-95E6-0D6416E4CF19</string>
-		</dict>
-		<key>588500D6-0468-4061-8DE4-FA2EEEBF8C2A</key>
+		<key>1BE35683-269B-4E71-A463-8F785339DAC1</key>
 		<dict>
 			<key>from</key>
 			<string>BDC72F77-D772-4694-BA5D-6EAA80279952 - BDC72F77-D772-4694-BA5D-6EAA80279952</string>
 			<key>to</key>
 			<string>8E38FF8C-C81A-4AE1-86B1-1D424780A3D3 - 8E38FF8C-C81A-4AE1-86B1-1D424780A3D3</string>
 		</dict>
-		<key>62797854-5518-44FF-A2FF-DDA0E55910E3</key>
+		<key>278676E0-AD22-41E8-BE34-4EF79B54C6FB</key>
 		<dict>
 			<key>from</key>
-			<string>0B1846AE-1355-4256-945D-E729DAA54C6A - 0B1846AE-1355-4256-945D-E729DAA54C6A</string>
-			<key>to</key>
 			<string>2193DF04-B44E-4A7F-8F2B-D86C5FF7559A - 2193DF04-B44E-4A7F-8F2B-D86C5FF7559A</string>
+			<key>to</key>
+			<string>393294FB-3F94-4973-8673-67023A76264C - 393294FB-3F94-4973-8673-67023A76264C</string>
 		</dict>
-		<key>93E8C035-23C4-4752-B6CA-7541F31E5A9C</key>
+		<key>2FA5BC28-9BB4-44BD-AB4B-1AA86235B389</key>
 		<dict>
 			<key>from</key>
-			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
+			<string>1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0 - 1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0</string>
 			<key>to</key>
-			<string>5D24A92A-5F8B-46F7-9453-4E7AF96C567B - 5D24A92A-5F8B-46F7-9453-4E7AF96C567B</string>
+			<string>0C765C07-3E11-46F7-BFD5-B42AEE9419F1 - 0C765C07-3E11-46F7-BFD5-B42AEE9419F1</string>
 		</dict>
-		<key>BF6D3FD3-612C-4011-96E2-F98DC73AB308</key>
+		<key>37AF2153-57B1-44C2-A6B9-DA8BB9D49D4B</key>
 		<dict>
 			<key>from</key>
 			<string>985B6BB6-4961-4E58-9A9D-1286716F063B - 985B6BB6-4961-4E58-9A9D-1286716F063B</string>
 			<key>to</key>
 			<string>1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0 - 1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0</string>
 		</dict>
-		<key>C19311EC-6336-4E7E-A264-1F2DA671029F</key>
+		<key>725970CC-8C27-4108-A500-E0860B36EA83</key>
 		<dict>
 			<key>from</key>
 			<string>8E38FF8C-C81A-4AE1-86B1-1D424780A3D3 - 8E38FF8C-C81A-4AE1-86B1-1D424780A3D3</string>
 			<key>to</key>
 			<string>0B1846AE-1355-4256-945D-E729DAA54C6A - 0B1846AE-1355-4256-945D-E729DAA54C6A</string>
 		</dict>
-		<key>D449F748-176E-4ED1-98A1-87F1AEB18845</key>
-		<dict>
-			<key>from</key>
-			<string>0C765C07-3E11-46F7-BFD5-B42AEE9419F1 - 0C765C07-3E11-46F7-BFD5-B42AEE9419F1</string>
-			<key>to</key>
-			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
-		</dict>
-		<key>D4553F14-EE99-4B3D-8532-5D05108F1686</key>
+		<key>856F2644-EEE0-4B55-A779-DEC584CD7E5A</key>
 		<dict>
 			<key>from</key>
 			<string>393294FB-3F94-4973-8673-67023A76264C - 393294FB-3F94-4973-8673-67023A76264C</string>
 			<key>to</key>
 			<string>985B6BB6-4961-4E58-9A9D-1286716F063B - 985B6BB6-4961-4E58-9A9D-1286716F063B</string>
 		</dict>
-		<key>E49E96A1-33E7-4356-99D8-D06C1FFD2043</key>
+		<key>8DDD9613-AF4F-41DD-8BE0-D9BEC8A9FB95</key>
 		<dict>
 			<key>from</key>
-			<string>1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0 - 1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0</string>
+			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
 			<key>to</key>
+			<string>5D24A92A-5F8B-46F7-9453-4E7AF96C567B - 5D24A92A-5F8B-46F7-9453-4E7AF96C567B</string>
+		</dict>
+		<key>8F2A5446-25ED-4A79-BC77-16C33A987ECA</key>
+		<dict>
+			<key>from</key>
+			<string>5D24A92A-5F8B-46F7-9453-4E7AF96C567B - 5D24A92A-5F8B-46F7-9453-4E7AF96C567B</string>
+			<key>to</key>
+			<string>23AEEEBE-B729-4D86-95E6-0D6416E4CF19 - 23AEEEBE-B729-4D86-95E6-0D6416E4CF19</string>
+		</dict>
+		<key>90F76AA7-642A-4241-B71C-99250B31CC5C</key>
+		<dict>
+			<key>from</key>
 			<string>0C765C07-3E11-46F7-BFD5-B42AEE9419F1 - 0C765C07-3E11-46F7-BFD5-B42AEE9419F1</string>
+			<key>to</key>
+			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
+		</dict>
+		<key>A4748D3E-A3C7-41E5-AAEF-BD4631DB5D42</key>
+		<dict>
+			<key>from</key>
+			<string>0B1846AE-1355-4256-945D-E729DAA54C6A - 0B1846AE-1355-4256-945D-E729DAA54C6A</string>
+			<key>to</key>
+			<string>2193DF04-B44E-4A7F-8F2B-D86C5FF7559A - 2193DF04-B44E-4A7F-8F2B-D86C5FF7559A</string>
 		</dict>
 	</dict>
 	<key>variables</key>
