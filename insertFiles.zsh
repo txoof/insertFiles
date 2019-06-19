@@ -175,7 +175,6 @@ insertFiles() {
     # copy the file into the appropriate directory
     #print "inserting $each"
     cp $each $studentDir/$gradeFolder
-
     if [[ $? -gt 0 ]]; then
       failCopy+=($each)
     continue
