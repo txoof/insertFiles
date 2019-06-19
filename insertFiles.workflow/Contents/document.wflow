@@ -231,6 +231,115 @@ end run</string>
 					<true/>
 					<key>Types</key>
 					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on run {input, parameters}		display dialog "This application will insert a each file in a folder into student Cumulative Folders on Google Shared Drive. 
+	
+Each file must have the student number in the filename. Files that do not have student numbers will be skipped.
+
+USE CARE! This operation cannot be undone! 
+"		return inputend run</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>05BF1C06-169A-4045-AA0B-B890CB97F8ED</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>FC084D1F-2960-4153-9435-4762087EB6B0</string>
+				<key>UUID</key>
+				<string>D050D4CE-CD7B-45FD-B3A3-3ADF7C659C45</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>conversionLabel</key>
+				<integer>0</integer>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>438.500000:329.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
 						<string>com.apple.cocoa.path</string>
 					</array>
 				</dict>
@@ -257,7 +366,7 @@ end run</string>
 					<dict>
 						<key>tokenizedValue</key>
 						<array>
-							<string>Choose a Finder Item:</string>
+							<string>Choose a Folder To Insert into Cumulative Folders</string>
 						</array>
 					</dict>
 				</dict>
@@ -283,7 +392,7 @@ end run</string>
 					<key>multipleSelection</key>
 					<false/>
 					<key>promptMessage</key>
-					<string>Choose a Finder Item:</string>
+					<string>Choose a Folder To Insert into Cumulative Folders</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.AskForFinderItems</string>
@@ -383,7 +492,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:419.000000</string>
+				<string>438.500000:664.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -485,7 +594,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:698.000000</string>
+				<string>438.500000:943.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Folder Contents.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -595,7 +704,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:983.000000</string>
+				<string>438.500000:1228.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -643,7 +752,7 @@ end run</string>
 				<key>ActionParameters</key>
 				<dict>
 					<key>source</key>
-					<string>on run	choose from list {" ", "--ps", "--tk", "--1"} with prompt "Please make your selection" without multiple selections allowed and empty selection allowed	return the result as stringend run</string>
+					<string>on run	choose from list {" ", "--ps", "--tk", "--1", "--2", "--3", "--4", "--5", "--6", "--7", "--8", "--9", "--10", "--11", "--12"} with prompt "Choose a Gradelevel folder to insert files into. Choose blank to use no folder." without multiple selections allowed and empty selection allowed	return the result as stringend run</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.RunScript</string>
@@ -699,7 +808,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:1408.000000</string>
+				<string>438.500000:1653.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -811,7 +920,7 @@ end run</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:1690.000000</string>
+				<string>438.500000:1935.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -895,7 +1004,7 @@ done</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>Disabled</key>
-				<false/>
+				<true/>
 				<key>InputUUID</key>
 				<string>56A8EF0C-C6F6-4C89-986D-1CE81A92ABB6</string>
 				<key>Keywords</key>
@@ -983,14 +1092,14 @@ done</string>
 					</dict>
 				</dict>
 				<key>isViewVisible</key>
-				<true/>
+				<false/>
 				<key>location</key>
-				<string>438.500000:1872.000000</string>
+				<string>438.500000:1976.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -1324,7 +1433,7 @@ insertFiles $fileArgs</string>
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>Disabled</key>
-				<true/>
+				<false/>
 				<key>InputUUID</key>
 				<string>DF31F577-F197-4608-A95F-CDE32E443B87</string>
 				<key>Keywords</key>
@@ -1414,7 +1523,7 @@ insertFiles $fileArgs</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:2054.000000</string>
+				<string>438.500000:2158.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1524,7 +1633,7 @@ insertFiles $fileArgs</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:2159.000000</string>
+				<string>438.500000:2263.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Set Value of Variable.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1694,7 +1803,7 @@ insertFiles $fileArgs</string>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>438.500000:2355.000000</string>
+				<string>438.500000:2459.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -1704,6 +1813,13 @@ insertFiles $fileArgs</string>
 	</array>
 	<key>connectors</key>
 	<dict>
+		<key>08EB4409-6271-48F2-B1A0-EC3F2137143A</key>
+		<dict>
+			<key>from</key>
+			<string>D050D4CE-CD7B-45FD-B3A3-3ADF7C659C45 - D050D4CE-CD7B-45FD-B3A3-3ADF7C659C45</string>
+			<key>to</key>
+			<string>44F24FD0-ACEC-477A-B2F9-B8B015CBB129 - 44F24FD0-ACEC-477A-B2F9-B8B015CBB129</string>
+		</dict>
 		<key>11D18C0A-CBD3-404E-9E00-DC444CAC69F1</key>
 		<dict>
 			<key>from</key>
@@ -1718,12 +1834,12 @@ insertFiles $fileArgs</string>
 			<key>to</key>
 			<string>8E38FF8C-C81A-4AE1-86B1-1D424780A3D3 - 8E38FF8C-C81A-4AE1-86B1-1D424780A3D3</string>
 		</dict>
-		<key>79631A48-6110-43AC-BD80-D5490CD68AA7</key>
+		<key>6790D5E5-11B3-4F8B-A06B-130CFE0C87EC</key>
 		<dict>
 			<key>from</key>
-			<string>065E89FD-3E72-4090-887B-3136A390DD67 - 065E89FD-3E72-4090-887B-3136A390DD67</string>
+			<string>23AEEEBE-B729-4D86-95E6-0D6416E4CF19 - 23AEEEBE-B729-4D86-95E6-0D6416E4CF19</string>
 			<key>to</key>
-			<string>44F24FD0-ACEC-477A-B2F9-B8B015CBB129 - 44F24FD0-ACEC-477A-B2F9-B8B015CBB129</string>
+			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
 		</dict>
 		<key>7A42A87B-518E-424E-A431-0AE0ECE33494</key>
 		<dict>
@@ -1732,19 +1848,12 @@ insertFiles $fileArgs</string>
 			<key>to</key>
 			<string>03112A5D-696C-4C01-89D3-BED128093899 - 03112A5D-696C-4C01-89D3-BED128093899</string>
 		</dict>
-		<key>95352E32-794B-4377-A7E5-04A92D269567</key>
+		<key>9FE4CB0B-FA2F-4EFE-9C61-11EB50918CA6</key>
 		<dict>
 			<key>from</key>
-			<string>03112A5D-696C-4C01-89D3-BED128093899 - 03112A5D-696C-4C01-89D3-BED128093899</string>
+			<string>065E89FD-3E72-4090-887B-3136A390DD67 - 065E89FD-3E72-4090-887B-3136A390DD67</string>
 			<key>to</key>
-			<string>056FBEA9-BBF5-4E41-99A5-B9BFE0C753D6 - 056FBEA9-BBF5-4E41-99A5-B9BFE0C753D6</string>
-		</dict>
-		<key>A5036AEF-AD69-4905-B1CD-C041DED4A4DE</key>
-		<dict>
-			<key>from</key>
-			<string>056FBEA9-BBF5-4E41-99A5-B9BFE0C753D6 - 056FBEA9-BBF5-4E41-99A5-B9BFE0C753D6</string>
-			<key>to</key>
-			<string>8D569538-6976-404E-B194-18ED9B93D927 - 8D569538-6976-404E-B194-18ED9B93D927</string>
+			<string>D050D4CE-CD7B-45FD-B3A3-3ADF7C659C45 - D050D4CE-CD7B-45FD-B3A3-3ADF7C659C45</string>
 		</dict>
 		<key>BC95711D-BB2C-41AB-BAF3-92B1B1E7CC3A</key>
 		<dict>
@@ -1752,6 +1861,13 @@ insertFiles $fileArgs</string>
 			<string>1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0 - 1BB0A82B-F4F7-47B6-8964-CE6AD2E57AB0</string>
 			<key>to</key>
 			<string>065E89FD-3E72-4090-887B-3136A390DD67 - 065E89FD-3E72-4090-887B-3136A390DD67</string>
+		</dict>
+		<key>C0B51DCD-4AFE-4732-B408-9C7079B208EC</key>
+		<dict>
+			<key>from</key>
+			<string>03112A5D-696C-4C01-89D3-BED128093899 - 03112A5D-696C-4C01-89D3-BED128093899</string>
+			<key>to</key>
+			<string>23AEEEBE-B729-4D86-95E6-0D6416E4CF19 - 23AEEEBE-B729-4D86-95E6-0D6416E4CF19</string>
 		</dict>
 		<key>CA956BDB-2EE9-42D9-9834-89CA22538916</key>
 		<dict>
