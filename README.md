@@ -43,7 +43,7 @@ This application expects one or more files that contain the student number in th
    -  This command will add each individual report card stored in the Downloads/grade 4 Report Cards/ folder into the folder ASH Student Cumulative Folders/Student Cumlative Folders (AKA Student Portfolios)/Class of 2099/Washington, George - 555663/04-Grade
    
 ## Trouble Shooting
-### Problem: Recieve the following message
+### Problem- "Fatal Error" message
 `FATAL ERROR
 Sentry file is missing from ASH Student Cumulative Folders`
 
@@ -68,7 +68,7 @@ There is a file that exists in the Shared drive (formerly team drive) called "`s
 2.  Either update The program or the shared drive name to fix this.
 
 
-### Problem recieve the following message:
+### Problem- recieve the following message:
 ```
 insertFiles inserts multiple test files into a Google Shared drive
 folder based on student numbers
@@ -96,7 +96,7 @@ Desktop/   Documents/ Downloads/
 1.   Make sure you supply a valid grade level folder option FIRST. It must be the first option after the command: `./insertFiles.zsh --3  ~/Downloads/grade\ 3 reports/*.pdf`
 2. Valid Grade level options: --ps, --tk, --kg, --1, --2, --3 .. --12
 
-### Problem receive the following message after running program:
+### Problem- receive message: Could not process the following files...
 ```
 Could not process the following files - no student number in name:
 /Users/aciuffo/Downloads/g3test/foo.pdf
@@ -104,7 +104,7 @@ Could not process the following files - no student number in name:
 ### Solution:
 1.  One or more of the PDFs do not have valid looking student numbers in the file name. The file "`foo.pdf`" is missing a student number all together. Rename the file to include the student number.
 
-### Problem receive the following message after running program:
+### Problem- receive the message: Could not process following files...
 ```
 Could not process following files - students not found on Shared Drive:
 /Users/aciuffo/Downloads/g3test/SPR_van KattenBillie_5033479.pdf
