@@ -1,6 +1,7 @@
 #!/bin/zsh
 # set the shared drive name for the portfolio folder
-mySharedDriveName="ASH Student Cumulative Folders"
+#mySharedDriveName="ASH Student Cumulative Folders"
+mySharedDriveName="IT Blabla I"
 # the name of the folder(s) that contains all of the cum folders
 # this should be relative to mySharedDrive
 myCumFolder="Student Cumulative Folders (AKA Student Portfolios)"
@@ -52,7 +53,7 @@ updates at: https://github.com/txoof/insertFiles\n\n"
 #Insert all PDFs in ~/Downloads/grade3 into 03-Grade sub folders
 #$] $myName --3 ~/Downloads/grade3/*.pdf
 
-#Insertr all PDFs in ~/Downloads/G3-Map_results into student folders:
+#Insert all PDFs in ~/Downloads/G3-Map_results into student folders:
 #$] $myName ~/Downloads/G3-Map_results/*.pdf 
 
   exit 0
@@ -257,5 +258,3 @@ driveCache=$myTempDir/sharedDriveCache.txt
 cacheDirs
 
 insertFiles $fileArgs
-
-
