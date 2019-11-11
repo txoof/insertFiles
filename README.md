@@ -22,7 +22,9 @@ This application expects one or more files that contain the student number in th
 * Select a folder with Progress Reports, Report Cards, etc. that are labeled with student id numbers:
   * ![student files](./Resources/select_student_files.png)
 * Select a grade level folder to insert the files. In this example *Grade 4 Q1 Reports* were selected, so the appropriate grade level folder is ***4***
-  * ![Grade level folder](./Resources/select_student_files.png)
+  * ![Grade level folder](./Resources/select_grade_level_folder.png)
+* A report will be generated showing files that were **not** inserted:
+    * ![final report](./Resources/final_report.png)
 
 
 ### Command Line Use
