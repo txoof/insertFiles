@@ -1,18 +1,30 @@
 # insertFiles
 Distribute multiple files into appropriate cumulative student folders on a google Shared drive (formerly Team Drive)
 
-insertFiles.app accepts one or more files that contain a PowerSchool student number; the supplied files are copied into the student portfolio folder; any files with the same name will be updated with the newest upload. The supplied file `SRP_DoeJohn_023451.pdf` will be inserted into John Doe's portfolio folder.
-
+insertFiles.app/script accepts one or more files that contain a PowerSchool student number; the supplied files are copied into the student portfolio folder. Any files with the same name will be overwritten with the newest upload.
 
 Any files that failed to copy will be listed.
 
 ## Installation and Configuration Requirements
-* [Google Filestream](https://support.google.com/a/answer/7491144?hl=en)
-  * Filestream is signed in with an account with editing rights to the Student Cumulative folders Shared Drive
-* The insertFiles.zsh script
+1. [Google Filestream](https://support.google.com/a/answer/7491144?hl=en)
+   * Filestream is signed in with an account with editing rights to the Student Cumulative folders Shared Drive
+2. [InsertFiles.app](https://github.com/txoof/insertFiles/blob/master/insertFiles.app.zip)
+   * Application can be moved to any location in the user's home folder
 
 ## Use
 This application expects one or more files that contain the student number in the FILE NAME. File names can be in any configuration, but **must ONLY contain the student number once**. 
+
+### OS X Application
+* Launch the Application by double clicking
+  * Note that any files inserted with this application **cannot** be undone. Use this with caution!
+* When prompted, locate the Google Drive - Shared drive folder that contains the student cummlative folders:
+  * ![cumm folders](./Resources/locate_cumm_folders.png)
+* Select a folder with Progress Reports, Report Cards, etc. that are labeled with student id numbers:
+  * ![student files](./Resources/select_student_files.png)
+* Select a grade level folder to insert the files. In this example *Grade 4 Q1 Reports* were selected, so the appropriate grade level folder is ***4***
+  * ![Grade level folder](./Resources/select_student_files.png)
+
+
 ### Command Line Use
 `./insertFiles.zsh [--GradeLevel (optional)] /Folder/With/Files/*.foo`
 
@@ -56,7 +68,7 @@ There is a file that exists in the Shared drive (formerly team drive) called "`s
 
 #### Check that you are signed in
 1.  Click on the FileStream icon and check that you are signed in with an account that can access the appropriate Shared Drive
-![FileStream Signed In](Resources/filestream_signedin.png)
+![FileStream Signed In](Resources/filestream_signedin.png =100x100)
 
 #### Check that the Sentry File Exists
 1.  Browse to the Shared Drive on google Drive and check if the file "`sentryFile_DO_NOT_REMOVE.txt`" is located in the root of the Shared Drive.
