@@ -87,10 +87,10 @@ insertFiles inserts multiple test files into a Google Shared drive
 folder based on student numbers
 
 command line usage:
-insertFiles [--<grade sub-folder>] StudentID-File1 FileN-StudentID
-insertFiles [--<grade sub-folder>] /path/to/files/.*
+insertFiles -p "/path/to/GoogleDrive/shared drive/Student Cumlative Folders/Cumlative Folder" [-g GradeLevel] StudentID-File1 FileN-StudentID
+insertFiles -p "/path/to/GoogleDrive/shared drive/Student Cumlative Folders/Cumlative Folder" [-g GradeLevel] /path/to/files/.*
 
-Grade Sub Folders: --ps, --tk, --kg, --1..--12
+GradeLevel: ps, tk, kg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 ```
 ### Solutions:
 #### Supply files for the program to work with:
