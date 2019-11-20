@@ -22,27 +22,33 @@ This application expects one or more files that contain the student number in th
 * Select a folder with Progress Reports, Report Cards, etc. that are labeled with student id numbers:
   * ![student files](./Resources/select_student_files.png)
 * Select a grade level folder to insert the files. In this example *Grade 4 Q1 Reports* were selected, so the appropriate grade level folder is ***4***
-  * ![Grade level folder](./Resources/select_student_files.png)
+  * ![Grade level folder](./Resources/select_grade_level_folder.png)
+* A report will be generated showing files that were **not** inserted:
+    * ![final report](./Resources/final_report.png)
 
 
 ### Command Line Use
 `./insertFiles.zsh [--GradeLevel (optional)] /Folder/With/Files/*.foo`
 
 ### Valid GradeLevel options:
-* --ps (preschool)
-* --tk (transition kindergarden)
-* --kg (kindergarten)
-* --1 (grade 1)..--12 (grade 12)
+* -g ps (preschool)
+* -g tk (transition kindergarden)
+* -g kg (kindergarten)
+* -g 1..-g 12
 
 **Valid Filename Formats**
+Valid filenames must contain a valid student number somehwere in the filename
 * `SPR_DoeJohn_324566.pdf` 
 * `ISA_Autumn-345566-Doe Jon.pdf`
 * `555457 John Doe.PDF`
 * `334577.doc`
+* `S1 Grade 4 Progress Report - Yeats, John_778654.pdf`
 
 **Invalid Filename Formats**
+Filenames that do not contain the student number or contain more than one set of numbers will not be processed.
 * `20182019_ISA Test Results_443556.pdf` ↢ Too many numbers
 * `John Doe.pdf` ↢ No student number
+* `20192020 Grade 4 S1 Report Card 5566893 Komenyaka, Useff.pdf` ↢ Too many numbers
 
 ### Examples
 *  Use the command below to insert all PDF files in the folder ~/Downloads/Grade-5-Map-Results/ into each student's Cumulative folder:
@@ -71,14 +77,9 @@ There is a file that exists in the Shared drive (formerly team drive) called "`s
 ![FileStream Signed In](Resources/filestream_signedin.png =100x100)
 
 #### Check that the Sentry File Exists
-1.  Browse to the Shared Drive on google Drive and check if the file "`sentryFile_DO_NOT_REMOVE.txt`" is located in the root of the Shared Drive.
+1.  Browse to the Shared Drive on google Drive and check if the file "`sentryFile_DO_NOT_REMOVE.txt`" is located in the top level Folder that contains the cummulative folders of the Shared Drive.
 2.  If the file is missing or does not have the proper name, recreate it using the following command from a Terminal prompt:
-   * touch "/Volumes/GoogleDrive/Shared drives//ASH Student Cumulative Folders/sentryFile_DO_NOT_REMOVE.txt"
-   
-#### Check if the Shared Drive name changed
-1.  The program expects the Shared Drive to be named exactly "ASH Student Cumulative Folders". 
-2.  Either update The program or the shared drive name to fix this.
-
+   * `touch "/Volumes/GoogleDrive/Shared\ drives/DRIVE NAME/PATH TO STUDENT CUMULATIVE FOLDER/sentryFile_DO_NOT_REMOVE.txt"`
 
 ### Problem- recieve the following message:
 ```
@@ -86,10 +87,10 @@ insertFiles inserts multiple test files into a Google Shared drive
 folder based on student numbers
 
 command line usage:
-insertFiles [--<grade sub-folder>] StudentID-File1 FileN-StudentID
-insertFiles [--<grade sub-folder>] /path/to/files/.*
+insertFiles -p "/path/to/GoogleDrive/shared drive/Student Cumlative Folders/Cumlative Folder" [-g GradeLevel] StudentID-File1 FileN-StudentID
+insertFiles -p "/path/to/GoogleDrive/shared drive/Student Cumlative Folders/Cumlative Folder" [-g GradeLevel] /path/to/files/.*
 
-Grade Sub Folders: --ps, --tk, --kg, --1..--12
+GradeLevel: ps, tk, kg, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 ```
 ### Solutions:
 #### Supply files for the program to work with:
@@ -123,7 +124,6 @@ Could not process following files - students not found on Shared Drive:
 ```
 ### Solution
 1.  Only students with cumulative/portfolio folders on the Google Shared Drive can be processed. Billie van Katten (SN 5033479) does not have a student folder.
-2.  Create a folder for Billie van Katten and try again with the following command: `./insertFiles.zsh /Users/aciuffo/Downloads/g3test/SPR_vanKattenBillie_5033479.pdf`
-   * This will only retry the failed file
+2.  Create a folder for Billie van Katten and try again
 
 
