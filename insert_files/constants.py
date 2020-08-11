@@ -23,8 +23,10 @@ USER_CONFIG_PATH = Path('~/.config').expanduser()/CONFIG_DIR/CONFIG_FILE
 
 # LOGGING #
 ###########
-FORMAT = '%(asctime)-15s %(module)s F:%(funcName)s - %(levelname)s: %(message)s'
-DATEFMT = '%Y.%m.%d %H:%M.%S'
+#FORMAT = '%(asctime)-15s %(module)s F:%(funcName)s - %(levelname)s: %(message)s'
+#DATEFMT = '%Y.%m.%d %H:%M.%S'
+LOGGING_CONFIG = __root_dir/'logging_cfg.ini'
+LOG_FILE = Path('~/'+APP_NAME+'.log').expanduser().absolute()
 
 # GUI #
 #######
@@ -44,8 +46,6 @@ SENTRY_FILE = 'sentryFile_DO_NOT_REMOVE.txt'
 
 STORAGE = Path('~/Library/Application Support/').expanduser()/'.'.join((DEVEL_NAME, APP_NAME))
 DATABASE = APP_NAME+'.db'
-
-STUDENT_DIR_CACHE = STORAGE/'student_dir.cache'
 
 # student grade level directories
 STUDENT_DIRS = ['00-Preschool',
