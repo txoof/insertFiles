@@ -42,3 +42,21 @@ POPUP_LOCATION = (WIN_LOCATION[0], WIN_LOCATION[1]+TEXT_ROWS*FONT_SIZE)
 ###########
 SENTRY_FILE = 'sentryFile_DO_NOT_REMOVE.txt'
 
+STORAGE = Path('~/Library/Application Support/').expanduser()/'.'.join((DEVEL_NAME, APP_NAME))
+DATABASE = APP_NAME+'.db'
+
+# student grade level directories
+STUDENT_DIRS = ['00-Preschool',
+                '00-Transition Kindergarten',
+                '01-Grade',
+                '02-Grade',
+                '03-Grade',
+                '04-Grade',
+                '05-Grade',
+                '06-Grade',
+                '07-Grade',
+                '08-Grade',
+                '09-Grade',
+                '10-Grade',
+                '11-Grade',
+                '12-Grade']
