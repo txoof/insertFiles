@@ -45,6 +45,8 @@ SENTRY_FILE = 'sentryFile_DO_NOT_REMOVE.txt'
 STORAGE = Path('~/Library/Application Support/').expanduser()/'.'.join((DEVEL_NAME, APP_NAME))
 DATABASE = APP_NAME+'.db'
 
+STUDENT_DIR_CACHE = STORAGE/'student_dir.cache'
+
 # student grade level directories
 STUDENT_DIRS = ['00-Preschool',
                 '00-Transition Kindergarten',
