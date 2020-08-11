@@ -9,6 +9,7 @@ verify_ssl = true
 ipykernel = "*"
 pysimplegui = "*"
 argconfigparse = "*"
+tinydb = "*"
 
 [requires]
 python_version = "3.7"
