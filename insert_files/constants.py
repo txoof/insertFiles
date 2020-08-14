@@ -48,7 +48,8 @@ STORAGE = Path('~/Library/Application Support/').expanduser()/'.'.join((DEVEL_NA
 DATABASE = APP_NAME+'.db'
 
 # student grade level directories
-STUDENT_DIRS = ['00-Preschool',
+STUDENT_DIRS = ['Admissions',
+                '00-Preschool',
                 '00-Transition Kindergarten',
                 '01-Grade',
                 '02-Grade',
