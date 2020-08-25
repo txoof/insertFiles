@@ -63,3 +63,21 @@ STUDENT_DIRS = ['Admissions',
                 '10-Grade',
                 '11-Grade',
                 '12-Grade']
+# DATABASE #
+############
+TABLES = {'failed': {
+                    'job_id': None,
+                    'local_path': None,
+                    'file_name': None,
+                    'failure': None,
+                    'target_folder': None,
+                    'student_number': None,
+                    'failure_function': None},
+         'succeeded': {
+                    'job_id': None,
+                    'local_path': None,
+                    'remote_path': None,
+                    'target_folder': None,
+                    'student_number': None,}
+
+          }
