@@ -68,16 +68,28 @@ STUDENT_DIRS = ['Admissions',
 TABLES = {'failed': {
                     'job_id': None,
                     'local_path': None,
-                    'file_name': None,
-                    'failure': None,
+                    'remote_path': None,
                     'target_folder': None,
                     'student_number': None,
+                    'failure': None,
                     'failure_function': None},
          'succeeded': {
                     'job_id': None,
                     'local_path': None,
                     'remote_path': None,
                     'target_folder': None,
-                    'student_number': None,}
+                    'student_number': None,
+                    'inserted_timestamp': None}
 
           }
+
+FAILURE_CODES = { 0: 'unknown error',
+                  10: 'file contains no student number',
+                  20: 'multiple folders found on Google drive for this student',
+                  21: 'no matching folders found on Google drive for this student',
+                  22: 'could not copy file -- see logs',
+                  23: 'error copying file -- see logs',
+                  90: 'error when accessing dictionary values -- see logs',
+                  100: None
+
+}
