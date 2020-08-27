@@ -65,26 +65,21 @@ STUDENT_DIRS = ['Admissions',
                 '12-Grade']
 # DATABASE #
 ############
-TABLES = {'failed': {
+TABLES = {'file_list': {
                     'job_id': None,
                     'local_path': None,
                     'remote_path': None,
                     'target_folder': None,
                     'student_number': None,
                     'failure': None,
-                    'failure_function': None},
-         'succeeded': {
-                    'job_id': None,
-                    'local_path': None,
-                    'remote_path': None,
-                    'target_folder': None,
-                    'student_number': None,
-                    'inserted_timestamp': None}
+                    'failure_function': None,
+                    'inserted_timestamp': None},
 
           }
 
 FAILURE_CODES = { 0: 'unknown error',
                   10: 'file contains no student number',
+                  11: 'entity is not a file or directory',
                   20: 'multiple folders found on Google drive for this student',
                   21: 'no matching folders found on Google drive for this student',
                   22: 'could not copy file -- see logs',
