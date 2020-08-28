@@ -46,6 +46,7 @@ SENTRY_FILE = 'sentryFile_DO_NOT_REMOVE.txt'
 
 STORAGE = Path('~/Library/Application Support/').expanduser()/'.'.join((DEVEL_NAME, APP_NAME))
 DATABASE = APP_NAME+'.db'
+DATABASE_PATH = STORAGE/DATABASE
 
 # student grade level directories
 STUDENT_DIRS = ['Admissions',
@@ -88,3 +89,4 @@ FAILURE_CODES = { 0: 'unknown error',
                   100: None
 
 }
+
