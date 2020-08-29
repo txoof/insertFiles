@@ -52,6 +52,7 @@ DATABASE_PATH = STORAGE/DATABASE
 STUDENT_DIRS = ['Admissions',
                 '00-Preschool',
                 '00-Transition Kindergarten',
+                '00-Kindergarten',
                 '01-Grade',
                 '02-Grade',
                 '03-Grade',
