@@ -67,6 +67,14 @@ STUDENT_DIRS = ['Admissions',
                 '12-Grade']
 # DATABASE #
 ############
+INTERVAL = {'minute': 60,
+            'hour': 60*60,
+            'day': 60*60*24,
+            'week': 60*60*24*7,
+            'year': 60*60*24*365}
+
+RETIRE_AGE = 4*INTERVAL['week']
+
 TABLES = {'file_list': {
                     'job_id': None,
                     'local_path': None,
@@ -75,7 +83,9 @@ TABLES = {'file_list': {
                     'student_number': None,
                     'failure': None,
                     'failure_function': None,
-                    'inserted_timestamp': None},
+                    'inserted_timestamp': None,
+                    'del_path': None,
+                    'deleted': False},
 
           }
 
