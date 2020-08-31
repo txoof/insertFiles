@@ -33,7 +33,7 @@ LOG_FILE = Path('~/'+APP_NAME+'.log').expanduser().absolute()
 FONT_FACE = 'Courier'
 FONT_SIZE = 14
 FONT = f'{FONT_FACE} {FONT_SIZE}'
-TEXT_WIDTH = 65
+TEXT_WIDTH = 80
 TEXT_ROWS = 40
 
 WIN_LOCATION = (80, 80)
