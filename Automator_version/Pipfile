@@ -10,6 +10,8 @@ ipykernel = "*"
 pysimplegui = "*"
 argconfigparse = "*"
 tinydb = "*"
+pyinstaller = "*"
+rich = "*"
 
 [requires]
 python_version = "3.8"

@@ -4,6 +4,7 @@ VERSION = '1.1.1-devel-2020.08.31'
 APP_NAME = 'insert_files'
 DEVEL_NAME = 'com.txoof'
 APP_DESC = '''insert individual student files into cumulative folders'''
+URL = 'https://github.com/txoof/'
 CONTACT = 'aaron.ciuffo@gmail.com'
 
 
@@ -65,6 +66,8 @@ STUDENT_DIRS = ['Admissions',
                 '10-Grade',
                 '11-Grade',
                 '12-Grade']
+
+HELP_FILE = 'Help.md'
 # DATABASE #
 ############
 INTERVAL = {'minute': 60,
