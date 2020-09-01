@@ -1,6 +1,6 @@
 from pathlib import Path
 
-VERSION = '1.1.1-devel-2020.08.31'
+VERSION = '1.1.2-devel-2020.09.01'
 APP_NAME = 'insert_files'
 DEVEL_NAME = 'com.txoof'
 APP_DESC = '''insert individual student files into cumulative folders'''
@@ -68,6 +68,7 @@ STUDENT_DIRS = ['Admissions',
                 '12-Grade']
 
 HELP_FILE = 'Help.md'
+
 # DATABASE #
 ############
 INTERVAL = {'minute': 60,
