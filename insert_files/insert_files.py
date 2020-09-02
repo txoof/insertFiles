@@ -1058,7 +1058,7 @@ def main_program(interactive=False, window=None, update_config=False):
     logging.debug(f'user config will be created: {update_user_config}')
     
     cmd_args_dict = parse_cmdargs()
-    cfg_files_dict = read_config([constants.CONFIG_FILE, USER_CONFIG_PATH])
+    cfg_files_dict = read_config([constants.DEFAULT_CONFIG_FILE, USER_CONFIG_PATH])
     
     config = ArgConfigParse.merge_dict(cfg_files_dict, cmd_args_dict)
     

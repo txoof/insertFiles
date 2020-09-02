@@ -1,6 +1,6 @@
 from pathlib import Path
 
-VERSION = '1.1.2-devel-2020.09.01'
+VERSION = '1.1.3-devel-2020.09.01'
 APP_NAME = 'insert_files'
 DEVEL_NAME = 'com.txoof'
 APP_DESC = '''insert individual student files into cumulative folders'''
@@ -10,7 +10,7 @@ CONTACT = 'aaron.ciuffo@gmail.com'
 
 
 # use this to avoid relative path hell elsewhere
-__root_dir = Path(__file__).absolute().parent
+_root_dir = Path(__file__).absolute().parent
 
 
 # CONFIG FILES #
@@ -19,6 +19,7 @@ __root_dir = Path(__file__).absolute().parent
 # base configuration file
 CONFIG_FILE = '.'.join((APP_NAME, 'ini'))
 CONFIG_DIR = '.'.join((DEVEL_NAME, APP_NAME))
+DEFAULT_CONFIG_FILE = _root_dir/CONFIG_FILE
 USER_CONFIG_PATH = Path('~/.config').expanduser()/CONFIG_DIR/CONFIG_FILE
 
 
@@ -26,7 +27,7 @@ USER_CONFIG_PATH = Path('~/.config').expanduser()/CONFIG_DIR/CONFIG_FILE
 ###########
 #FORMAT = '%(asctime)-15s %(module)s F:%(funcName)s - %(levelname)s: %(message)s'
 #DATEFMT = '%Y.%m.%d %H:%M.%S'
-LOGGING_CONFIG = __root_dir/'logging_cfg.ini'
+LOGGING_CONFIG = _root_dir/'logging_cfg.ini'
 LOG_FILE = Path('~/'+APP_NAME+'.log').expanduser().absolute()
 
 # GUI #
