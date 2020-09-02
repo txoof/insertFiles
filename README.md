@@ -10,19 +10,63 @@ insert_files files into Student Cumulative Folders on Google Drive.
 4. Locate the insert_files icon and drag it into your `Applications` folder
 5. Locate the insert_files icon in your `Applications` folder and double click on it to run
     * If you receive error messages or popups preventing you from running the application see the [Help](#Help) section
-7. Click "Insert Files" button to begin inserting files.
-6. If this is the first time you have run this program, you will be asked to choose a Google Shared drive **and** cumulative student folder. 
+6. Click "Insert Files" button to begin inserting files.
+7. If this is the first time you have run this program, you will be asked to choose a Google Shared drive **and** cumulative student folder. 
     * If you are unsure how to do this, see the [Help](#Help) section
-8. When prompted slect a student export file to process by clicking "Browse"
+8. Browse to a folder that contains files to be inserted and click "OK"
+   * Each of these files will be inserted into the same grade-level folder for each student
+9. Next select a grade level folder -- the selected files will be deposeted into that folder for each student
+10. Repeat as needed
 
+## Instructions
 
+### Preparing Files to be Inserted
+
+Create a folder with individual files that will be inserted into a grade level folder. For example, create a folder for all Grade-4 MAP test results or Grade-9 S1 Report cards. Each file must have the student number in the file name. **Any** six-digit number in the filename will be treated as if it were a student number. Please make sure file names do not include multiple six-digit numbers.
+
+The [PDF Split](https://github.com/txoof/pdfSplit) application can be very useful for splitting PDF files into individual files.
+
+#### Examples:
+
+**OK:**
+* Washington, George 453256.pdf
+* van Oranje, Willem-338125-2020 Map Results.pdf
+* Fields, Sally - work sample Grade 2 247152.pdf
+* 998541_Terry_Pratchet-08-09-2018_Results.txt
+* Peter Buck - class photo 192364.png
+* Peter_Buck-folder-192364
+    
+**NOT OK:**
+* Washington, George.pdf
+    * No student number
+* van Oranje, Willem-338125-190801 Map Results.pdf
+    * Two possible student numbers
+* Fields, Sally - work sample Grade 2 24715.pdf
+    * Student number is only 5 digits
+
+### Inserting Files
+Click the "Insert Files" folder and follow the instructions.
+
+Use the "Browse" button to locate a folder full of files that will be inserted into one grade-year folder. Then choose which grade-level folder those files will be inserted into. This is **VERY** difficult to undo. Please act with care.
+
+insert_files will attempt to find the appropriate folders and insert each file into the correct sub folder. When it is complete, insert_files will generate a report indicating files that were inserted and those which could not be inserted.
+
+In general, it is best to manually handle any files that had issues. Re-running the same batch of files is possible, but not advisable as it can lead to duplicate files in the folders.
+
+### Deleting Files
+If a batch of files was inserted into the wrong grade level folder in error, or should not have been distributed, it is possible to delete some files. insert_files keeps a limited record of files that were inserted within the last 28 calendar days. insert_files can attempt to delete these files. If the files have been moved, renamed, or otherwise altered, insert_files will fail to remove them. 
+
+It is best to delete files as soon as an error is detected. After 28 calendar days, files must be remove manually by locating them in Google Drive and deleting them one-by-one.
+
+Any files removed by insert files are **VERY** difficult to un-delete; these files must be restored using the Google Drive undelete features. You have exactly 28 calendar days to restore a deleted file before it is removed forever.
+
+## Requirements
+Insert files depends on Google File Stream with an authenticated user that has write permissions to the Student Portfolio Folders. See the [Help](#Help) section below for instructions for installing Google File Stream.
 
 Each of the files to be "inserted" must have a PowerSchool student number in the file name. If a matching student number is found on the Google Shared drive, the file will be copied into the student folder. 
 
-## Requirements
-Insert files depends on Google File Stream with an authenticated user that has write permissions to the Student Portfolio Folders.
-
 ## Help
+
 ### "insert_files" Cannot Be Opened
 ![unidentified developer window](./documentation/unidentified_devel.png)
 
