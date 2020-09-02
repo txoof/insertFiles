@@ -3,7 +3,7 @@ source_path=./insert_files
 
 publish_tar=insert_files.tgz
 
-version_number=`grep version $source_path/constants.py | sed -nE  's/^version[ ]+=[ ]+(.*)/\1/p' | tr -d \'\"`
+version_number=`grep version $source_path/constants.py | sed -nE  's/^VERSION[ ]+=[ ]+(.*)/\1/p' | tr -d \'\"`
 
 
 if [ -z "$1" ]; then
