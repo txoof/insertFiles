@@ -1,6 +1,8 @@
 # insert_files
 insert_files files into Student Cumulative Folders on Google Drive.
 
+Previous versions can found [here](https://github.com/txoof/insertFiles/tree/development/Automator_version)
+
 ## Quick Start
 
 1. [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
