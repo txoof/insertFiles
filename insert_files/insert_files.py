@@ -1,10 +1,27 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 # coding: utf-8
 
 
+# In[1]:
+
+
+#get_ipython().run_line_magic('load_ext', 'autoreload')
+
+#get_ipython().run_line_magic('autoreload', '2')
+#get_ipython().run_line_magic('reload_ext', 'autoreload')
 
 
 
+
+# In[2]:
+
+
+#get_ipython().system(' ~/bin/develtools/nbconvert insert_files.ipynb')
+
+
+
+
+# In[3]:
 
 
 import builtins
@@ -50,6 +67,8 @@ import time
 
 
 
+# In[36]:
+
 
 import PySimpleGUI as sg
 import ArgConfigParse
@@ -61,6 +80,8 @@ from rich.markdown import Markdown
 
 
 
+# In[5]:
+
 
 # FORMAT = constants.FORMAT
 # DATEFMT = constants.DATEFMT
@@ -69,6 +90,8 @@ from rich.markdown import Markdown
 
 
 
+
+# In[6]:
 
 
 def do_exit(e='unknown error in unknown module!', exit_status=99):
@@ -114,6 +137,8 @@ def do_exit(e='unknown error in unknown module!', exit_status=99):
 
 
 
+# In[7]:
+
 
 def adjust_handler(handler=None, new_level=None):
     '''adjust a logging handler
@@ -145,6 +170,8 @@ def adjust_handler(handler=None, new_level=None):
 
 
 
+
+# In[8]:
 
 
 class multi_line_string():
@@ -182,6 +209,8 @@ class multi_line_string():
 
 
 
+# In[9]:
+
 
 def wrap_print(t='', width=None, supress_print=False):
     '''print a text-wrapped string
@@ -205,6 +234,8 @@ def wrap_print(t='', width=None, supress_print=False):
 
 
 
+
+# In[10]:
 
 
 def parse_cmdargs():
@@ -237,6 +268,8 @@ def parse_cmdargs():
 
 
 
+# In[11]:
+
 
 def read_config(files):
     '''parse .ini files 
@@ -253,6 +286,8 @@ def read_config(files):
 
 
 
+
+# In[12]:
 
 
 def check_drive_path(drive_path=None):
@@ -313,6 +348,8 @@ def check_drive_path(drive_path=None):
 
 
 
+# In[13]:
+
 
 def print_help():
     logging.debug('getting help')
@@ -331,6 +368,8 @@ def print_help():
 
 
 
+# In[14]:
+
 
 def init_db():
     db_file = Path(constants.STORAGE/constants.DATABASE)
@@ -347,6 +386,8 @@ def init_db():
 
 
 
+# In[15]:
+
 
 class job_time():
     def __init__(self):
@@ -359,6 +400,8 @@ class job_time():
 
 
 
+
+# In[16]:
 
 
 # def window_get_dir():
@@ -384,6 +427,8 @@ class job_time():
 
 
 
+# In[17]:
+
 
 def window_drive_path():
     '''sg window that prompts to pick a google drive folder'''
@@ -402,6 +447,8 @@ def window_drive_path():
 
 
 
+
+# In[18]:
 
 
 def window_get_dir():
@@ -438,6 +485,8 @@ def window_get_dir():
 
 
 
+# In[19]:
+
 
 def get_grade_level():
     '''sg window that prompts for a slection from constants.STUDENT_DIRS
@@ -468,6 +517,8 @@ def get_grade_level():
 
 
 
+
+# In[20]:
 
 
 def list_jobs(show_deleted=False):
@@ -505,6 +556,8 @@ def list_jobs(show_deleted=False):
 
 
 
+
+# In[21]:
 
 
 def window_get_past_job():
@@ -558,6 +611,8 @@ def window_get_past_job():
 
 
 
+# In[22]:
+
 
 # def open_db():
 #     try:
@@ -569,6 +624,8 @@ def window_get_past_job():
 
 
 
+
+# In[23]:
 
 
 def db_cleanup(retire_age=None):
@@ -614,6 +671,8 @@ def db_cleanup(retire_age=None):
 
 
 
+
+# In[24]:
 
 
 def delete_files():
@@ -714,6 +773,8 @@ def delete_files():
 
 
 
+# In[25]:
+
 
 def table_entry(job_id=None, local_path=None, remote_path=None, sub_folder=None,
                 student_number=None, failure=None, failure_function=None, inserted_timestamp=None,
@@ -733,6 +794,8 @@ def table_entry(job_id=None, local_path=None, remote_path=None, sub_folder=None,
 
 
 
+
+# In[26]:
 
 
 def sort_files(files, job_id=0):
@@ -778,6 +841,8 @@ def sort_files(files, job_id=0):
 
 
 
+# In[27]:
+
 
 def cache_dirs(path, depth=2):
     '''use system `find` command to cache directory paths into a list
@@ -798,6 +863,8 @@ def cache_dirs(path, depth=2):
 
 
 
+
+# In[28]:
 
 
 def match_dirs(files, cache):
@@ -833,6 +900,8 @@ def match_dirs(files, cache):
 
 
 
+
+# In[29]:
 
 
 def write_summary(file_list):
@@ -893,6 +962,8 @@ def write_summary(file_list):
 
 
 
+# In[30]:
+
 
 def write_db(file_list):
     '''sanitize and write file_list to tinydb database
@@ -931,6 +1002,8 @@ def write_db(file_list):
 
 
 
+
+# In[31]:
 
 
 def insert_files(files, sub_folder):
@@ -1022,11 +1095,15 @@ def insert_files(files, sub_folder):
 
 
 
+# In[ ]:
 
 
 
 
 
+
+
+# In[1]:
 
 
 def main_program(interactive=False, window=None, update_config=False):
@@ -1199,6 +1276,8 @@ def main_program(interactive=False, window=None, update_config=False):
 
 
 
+# In[33]:
+
 
 def main():
     
@@ -1286,11 +1365,15 @@ def main():
 
 
 
+# In[34]:
+
 
 # from IPython.core.debugger import set_trace
 
 
 
+
+# In[37]:
 
 
 if __name__ =='__main__':
@@ -1298,6 +1381,8 @@ if __name__ =='__main__':
 
 
 
+
+# In[ ]:
 
 
 # adjust_handler(handler='Stream', new_level='DEBUG')
