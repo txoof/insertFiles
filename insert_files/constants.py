@@ -1,6 +1,6 @@
 from pathlib import Path
 
-VERSION = '1.1.4-2020.09.06-devel_I12'
+VERSION = '1.1.4-2020.09.06-devel_I13'
 APP_NAME = 'insert_files'
 DEVEL_NAME = 'com.txoof'
 APP_DESC = '''insert individual student files into cumulative folders'''
