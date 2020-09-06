@@ -13,7 +13,7 @@
 
 
 
-# In[2]:
+# In[6]:
 
 
 #get_ipython().system(' ~/bin/develtools/nbconvert insert_files.ipynb')
@@ -21,7 +21,7 @@
 
 
 
-# In[3]:
+# In[8]:
 
 
 import builtins
@@ -67,7 +67,7 @@ import time
 
 
 
-# In[36]:
+# In[9]:
 
 
 import PySimpleGUI as sg
@@ -378,10 +378,18 @@ def init_db():
         try:
             db_file.parent.mkdir(parents=True, exist_ok=True)
         except Exception as e:
-            do_exit(f'failed to create DB Directory -- fatal error: {e}')
+            logging.error(f'failed to create DB Directory -- fatal error: {e}')
+            db = None
     
-    return TinyDB(db_file)
     
+    try:
+        db = TinyDB(db_file)
+    except Exception as e:
+        logging.error(f'failed to open DB File: {e}')
+        db = None
+        
+    
+    return db    
 
 
 
@@ -535,22 +543,26 @@ def list_jobs(show_deleted=False):
 #         return False
     db = init_db()
     
-    job_set = set()
-    job_list = {}
-    format = "%b %d %Y - %H:%M:%S"
-    [job_set.add(i['job_id']) for i in db.search((Query().job_id.exists())  ) ]
-    
-    
-    for job_id in job_set:
-        job_summary = {}
-        date = datetime.fromtimestamp(job_id).strftime(format)
-        result = db.search((Query().job_id == job_id) & (Query().deleted == show_deleted))
-        
-        location = f"{result[0]['sub_folder']} folder" if not result[0]['sub_folder'] == None else 'No valid files remain'
-        title = f'{date}: {len(result)} files --> {location}'
-        job_list[title] = job_id
-#     [job_list.update({datetime.fromtimestamp(i).strftime(format) :i}) for i in job_set]
-    
+    if not db:
+        job_list = []
+        logging.warning('failed to read jobs from DB -- See previous errors')
+    else:
+        job_set = set()
+        job_list = {}
+        format = "%b %d %Y - %H:%M:%S"
+        [job_set.add(i['job_id']) for i in db.search((Query().job_id.exists())  ) ]
+
+
+        for job_id in job_set:
+            job_summary = {}
+            date = datetime.fromtimestamp(job_id).strftime(format)
+            result = db.search((Query().job_id == job_id) & (Query().deleted == show_deleted))
+
+            location = f"{result[0]['sub_folder']} folder" if not result[0]['sub_folder'] == None else 'No valid files remain'
+            title = f'{date}: {len(result)} files --> {location}'
+            job_list[title] = job_id
+    #     [job_list.update({datetime.fromtimestamp(i).strftime(format) :i}) for i in job_set]
+
     
     return job_list
 
@@ -625,7 +637,7 @@ def window_get_past_job():
 
 
 
-# In[23]:
+# In[11]:
 
 
 def db_cleanup(retire_age=None):
@@ -640,33 +652,37 @@ def db_cleanup(retire_age=None):
     logging.debug(f'removing db entries older than {retire_age}')
     db = init_db()
     
-    if not retire_age:
-        retire_age = constants.RETIRE_AGE
-        
-    if not isinstance(retire_age, (int, float)):
-        raise TypeError 
+    if not db:
+        logging.error('could not read database -- see previous errors')
+        del_queue = set()
+    else:
+        if not retire_age:
+            retire_age = constants.RETIRE_AGE
 
-    del_queue = set()
-    now = int(time.time())
-    
-    try:
-        old_items = db.search(Query().job_id < now - retire_age)
-    except (AttributeError ) as e:
-        logging.error(f'error opening database: {e}')
-        return []
-        
+        if not isinstance(retire_age, (int, float)):
+            raise TypeError 
 
-        [del_queue.add(i.doc_id) for i in old_items]
-    
-    
-    try:
-        db.remove(doc_ids=del_queue)
-    except KeyError as e:
-        logging.error(f'error removing documents {del_queue}: {e}')
-        return []
-    
-    logging.info(f'removed {len(del_queue)} db entries')
-    return(del_queue)
+        del_queue = set()
+        now = int(time.time())
+
+        try:
+            old_items = db.search(Query().job_id < now - retire_age)
+        except (AttributeError ) as e:
+            logging.error(f'error opening database: {e}')
+            return []
+
+
+            [del_queue.add(i.doc_id) for i in old_items]
+
+
+        try:
+            db.remove(doc_ids=del_queue)
+        except KeyError as e:
+            logging.error(f'error removing documents {del_queue}: {e}')
+            return []
+
+        logging.info(f'removed {len(del_queue)} db entries')
+    return del_queue
     
 
 
@@ -679,14 +695,14 @@ def delete_files():
     logging.debug('prompt user to delete files')
     db = init_db()
     if not db:
-        do_exit("could not open db", 1)
+        return do_exit("Could not open the database of inserted files -- perhaps it does not exist?\nSee the log file for more information", 1)
     
     event, job_id = window_get_past_job()
     
     
     
     if not job_id:
-        do_exit("no files selected", 0)
+        return do_exit("no files selected", 0)
     
     result = db.search((Query().job_id == job_id) & (Query().failure == None) & (Query().deleted != True))
         
