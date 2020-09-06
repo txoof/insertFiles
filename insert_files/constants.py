@@ -68,7 +68,7 @@ STUDENT_DIRS = ['Admissions',
                 '11-Grade',
                 '12-Grade']
 
-HELP_FILE = 'Help.md'
+HELP_FILE = _root_dir/'Help.md'
 
 # DATABASE #
 ############
