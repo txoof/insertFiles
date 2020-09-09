@@ -1,7 +1,8 @@
 # insert_files
-insert_files files into Student Cumulative Folders on Google Drive.
-
+insert_files files into Student Cumulative Folders on Google Drive
 Previous versions can found [here](https://github.com/txoof/insertFiles/tree/development/Automator_version)
+
+
 
 ## Quick Start
 
@@ -22,13 +23,18 @@ Previous versions can found [here](https://github.com/txoof/insertFiles/tree/dev
 
 ## Instructions
 
+### Getting Started
+You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream ] below(#SetupFilestream). 
+
+The first time you run insert_files, you must specify the Shared Drive **AND** the student cumulative folder. Once you have set this up the first time, it is not necessary to chage this setting unless the name of the drive or folder chagnes. See [Choosing the Shared Drive and Cumulative Student Folder](#ChooseSharedDrive) below for help.
+
 ### Preparing Files to be Inserted
 
 Create a folder with individual files that will be inserted into a grade level folder. For example, create a folder for all Grade-4 MAP test results or Grade-9 S1 Report cards. Each file must have the student number in the file name. **Any** six-digit number in the filename will be treated as if it were a student number. Please make sure file names do not include multiple six-digit numbers.
 
-The [PDF Split](https://github.com/txoof/pdfSplit) application can be very useful for splitting PDF files into individual files.
+The [PDF Split](https://github.com/txoof/pdfSplit) application can be very useful for splitting PDF files that contain reports for multiple students such as report cards or MAP test results into individual files.
 
-#### Examples:
+#### Example File/Folder Names:
 
 **OK:**
 * Washington, George 453256.pdf
@@ -40,11 +46,11 @@ The [PDF Split](https://github.com/txoof/pdfSplit) application can be very usefu
     
 **NOT OK:**
 * Washington, George.pdf
-    * No student number
+    * *Reason*: No student number
 * van Oranje, Willem-338125-190801 Map Results.pdf
-    * Two possible student numbers
+    * *Reason*: Two possible student numbers
 * Fields, Sally - work sample Grade 2 24715.pdf
-    * Student number is only 5 digits
+    * *Reason*: Student number is only 5 digits
 
 ### Inserting Files
 Click the "Insert Files" button and follow the instructions.
@@ -56,7 +62,12 @@ insert_files will attempt to find the appropriate folders and insert each file i
 In general, it is best to manually handle any files that had issues. Re-running the same batch of files is possible, but not advisable as it can lead to duplicate files in the folders.
 
 ### Deleting Files
+
+**THIS FEATURE WILL DELETE THE ENTIRE BATCH OF FILES**. 
+
 If a batch of files was inserted into the wrong grade level folder in error, or should not have been distributed, it is possible to delete some files. insert_files keeps a limited record of files that were inserted within the last 28 calendar days. insert_files can attempt to delete these files. If the files have been moved, renamed, or otherwise altered, insert_files will fail to remove them. 
+
+To delete individual files, it is best to locate the student folder on the Google Shared Drive and remove it manually.
 
 It is best to delete files as soon as an error is detected. After 28 calendar days, files must be remove manually by locating them in Google Drive and deleting them one-by-one.
 
@@ -81,9 +92,10 @@ This error indicates that the program was not created by an "official" developer
     * If you download a new version of the application, you *may* need to repeat these steps
     
 ### Choosing the Shared Drive and Cumulative Student Folder
+<a name="ChooseSharedDrive></a>
 ![choose the Google Shared Drive and Cumulative folder](./documentation/choose_gdrive.png)
 
-createFolders needs to know both which Google Shared Drive to use and the folder where Student Cumulative Folders are stored. The first time you run createFolders, it will ask you to choose the appropriate drive and folder.
+createFolders needs to know both which Google Shared Drive to use and the folder where Student Cumulative Folders are stored. The first time you run createFolders, it will ask you to choose the appropriate drive and folder. [This link](https://drive.google.com/drive/folders/176UqrsfSHrJX-9AXMzpTm7wtZYfPQj8U) leads to the exact folder that must be used. Browsing to the link above will show the current Shared Drive and the current name of the folder.
 
 1. Click "Browse" to open a folder chooser window
     ![choose a google shared drive](./documentation/folder_picker.png)
@@ -99,7 +111,8 @@ createFolders needs to know both which Google Shared Drive to use and the folder
 7. Click "Process File" to begin processing a student.export file    
 
 ### Setup Google FileStream
-Google FileStream is required for createFolders. The user must be signed in with an account that has write permissions to the Student Cumulative folders drive.
+<a name="SetupFilestream"></a>
+Google FileStream is required for createFolders. The user must be signed in with an account that has `Contributor` permissions to the [Student Cumulative folders drive](https://drive.google.com/drive/folders/0AKKRR6NkiaQBUk9PVA). 
 
 1. Download [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) and run the installer.
 2. Launch Google FileStream if it is not running (look for the icon in the menu bar) and click "Sign in"
