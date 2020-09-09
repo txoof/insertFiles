@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['insert_files.py'],
-             pathex=['/Users/aaronciuffo/Documents/src/insertFiles/insert_files'],
+             pathex=['/Users/aciuffo/Documents/src/insertFiles/insert_files'],
              binaries=[],
              datas=[('insert_files.ini', '.'), ('logging_cfg.ini', '.'), ('Help.md', '.')],
              hiddenimports=[],
@@ -30,4 +30,4 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=False )
+          console=True )

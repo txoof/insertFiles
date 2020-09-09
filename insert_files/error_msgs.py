@@ -26,7 +26,7 @@ If you are sure
 `{drive_path}` 
 is correct, please contact IT Support and ask for help. 
 
-Screenshot or copy this entire text below the line and provide it to IT Support.
+Screenshot or copy the entire text below the line and provide it to IT Support.
 ###########################################################
 
 IT Support:
@@ -42,9 +42,10 @@ The following steps should be run on the user's computer, signed in as the user
 1) Check Google File Stream is running on the user's computer and the use is signed in
 2) Use Finder to verify the user has access to {drive_path}
 3) Check that `Student Cumulative Folders (AKA Student Portfolios)` exists on the Shared Drive above
+    * If the `Student Cummulative Folders` folder exists, be sure to select botht the correct Shared Drive **AND** the folder `Student Cummulative Folders` when selecting a Shared Drive. The steps below are NOT NEEDED.
 4) Open `terminal.app` and run the command below
 
-     $ touch {drive_path}/{sentry_file}
+     $ touch {sentry_file_path}
 
 5) Try running the program again'''
 
