@@ -6,6 +6,8 @@ Previous versions can found [here](https://github.com/txoof/insertFiles/tree/dev
 
 ## Quick Start
 
+**IF YOU ARE UNFAMILIAR WITH THIS APPLICATION PLEASE SEE THE [INSTRUCTIONS](#Instructions) SECTION BELOW.**
+
 1. [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
 1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.tgz)
 2. Locate the file `insert_files.tgz` -- likely in your `Downloads` folder
@@ -22,6 +24,7 @@ Previous versions can found [here](https://github.com/txoof/insertFiles/tree/dev
 10. Repeat as needed
 
 ## Instructions
+<a name="Instructions"></a>
 
 ### Getting Started
 You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream ] below(#SetupFilestream). 
