@@ -47,7 +47,7 @@ The [PDF Split](https://github.com/txoof/pdfSplit) application can be very usefu
     * Student number is only 5 digits
 
 ### Inserting Files
-Click the "Insert Files" folder and follow the instructions.
+Click the "Insert Files" button and follow the instructions.
 
 Use the "Browse" button to locate a folder full of files that will be inserted into one grade-year folder. Then choose which grade-level folder those files will be inserted into. This is **VERY** difficult to undo. Please act with care.
 
