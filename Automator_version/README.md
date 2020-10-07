@@ -1,4 +1,7 @@
-# insertFiles
+# insertFiles DEPRICATED
+**This version is no longer maintained**
+Find the most current version [here.](https://github.com/txoof/insertFiles#insertFiles)
+
 Distribute multiple files into appropriate cumulative student folders on a google Shared drive (formerly Team Drive)
 
 insertFiles.app/script accepts one or more files that contain a PowerSchool student number; the supplied files are copied into the student portfolio folder. Any files with the same name will be overwritten with the newest upload.
@@ -8,7 +11,7 @@ Any files that failed to copy will be listed.
 ## Installation and Configuration Requirements
 1. [Google Filestream](https://support.google.com/a/answer/7491144?hl=en)
    * Filestream is signed in with an account with editing rights to the Student Cumulative folders Shared Drive
-2. [InsertFiles.app](https://github.com/txoof/insertFiles/blob/master/insertFiles.app.zip)
+2. [InsertFiles.app](https://github.com/txoof/insertFiles/raw/master/Automator_version/insertFiles.app.zip)
    * Application can be moved to any location in the user's home folder
 
 ## Use
