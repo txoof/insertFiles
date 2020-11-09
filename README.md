@@ -1,19 +1,17 @@
 # insert_files
-insert_files files into Student Cumulative Folders on Google Drive
-Previous versions can found [here](https://github.com/txoof/insertFiles/tree/development/Automator_version)
-
-
+insert_files files by grade-level into Student Cumulative Folders on Google Drive
+Previous versions that are no longer supported can found [here](https://github.com/txoof/insertFiles/tree/development/Automator_version)
 
 ## Quick Start
 
 **IF YOU ARE UNFAMILIAR WITH THIS APPLICATION PLEASE SEE THE [INSTRUCTIONS](#Instructions) SECTION BELOW.**
 
 1. [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
-1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.tgz)
-2. Locate the file `insert_files.tgz` -- likely in your `Downloads` folder
-3. Double click on the file to decompress it
-4. Locate the insert_files icon and drag it into your `Applications` folder
-5. Locate the insert_files icon in your `Applications` folder and double click on it to run
+1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.pkg)
+2. Locate the file `insert_files.pkg` -- likely in your `Downloads` folder
+3. Double click on the file to run the installer
+   * You will likely need an administrator password to install this application
+5. Locate the `insert_files` icon in your `Applications` folder and double click on it to run
     * If you receive error messages or popups preventing you from running the application see the [Help](#Help) section
 6. Click "Insert Files" button to begin inserting files.
 7. If this is the first time you have run this program, you will be asked to choose a Google Shared drive **and** cumulative student folder. 
@@ -27,15 +25,18 @@ Previous versions can found [here](https://github.com/txoof/insertFiles/tree/dev
 <a name="Instructions"></a>
 
 ### Getting Started
-You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream ] below(#SetupFilestream). 
+You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream](#SetupFilestream). 
 
 The first time you run insert_files, you must specify the Shared Drive **AND** the student cumulative folder. Once you have set this up the first time, it is not necessary to chage this setting unless the name of the drive or folder chagnes. See [Choosing the Shared Drive and Cumulative Student Folder](#ChooseSharedDrive) below for help.
 
 ### Preparing Files to be Inserted
+This application is designed to work with files that are separated by grade level. insert_files will process all of the files in a folder and copy them into the cumulative files by GRADE LEVEL. For example all Grade-3 Map tests results can be inserted into the Grade-03 folder for each individual student. 
 
-Create a folder with individual files that will be inserted into a grade level folder. For example, create a folder for all Grade-4 MAP test results or Grade-9 S1 Report cards. Each file must have the student number in the file name. **Any** six-digit number in the filename will be treated as if it were a student number. Please make sure file names do not include multiple six-digit numbers.
+It is **not** possible to process a folder that contains a mixture of grade-levels. A mixed set of files must be sepparated by hand prior to using this tool.
 
-The [PDF Split](https://github.com/txoof/pdfSplit) application can be very useful for splitting PDF files that contain reports for multiple students such as report cards or MAP test results into individual files.
+To get started, create a folder with individual files that will be inserted into a grade level folder. For example, create a folder for all "Grade-4 MAP "test results or "Grade-9 S1 Report cards". Each file must have the student number in the file name. **Any** six-digit number in the filename will be treated as if it were a student number. Please make sure file names do not include multiple six-digit numbers.
+
+The [PDF Split](https://github.com/txoof/pyPDF_split#pypdf_split) application can be very useful for splitting PDF files that contain reports for multiple students such as report cards or MAP test results into individual files.
 
 #### Example File/Folder Names:
 
@@ -58,7 +59,7 @@ The [PDF Split](https://github.com/txoof/pdfSplit) application can be very usefu
 ### Inserting Files
 Click the "Insert Files" button and follow the instructions.
 
-Use the "Browse" button to locate a folder full of files that will be inserted into one grade-year folder. Then choose which grade-level folder those files will be inserted into. This is **VERY** difficult to undo. Please act with care.
+Use the "Browse" button to locate a folder full of files that will be inserted into one grade-year folder. Then choose which grade-level folder those files will be inserted into. This is **VERY** difficult to undo. ***Please act with care***.
 
 insert_files will attempt to find the appropriate folders and insert each file into the correct sub folder. When it is complete, insert_files will generate a report indicating files that were inserted and those which could not be inserted.
 
