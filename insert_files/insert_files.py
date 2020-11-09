@@ -1,27 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 
-# In[38]:
-
-
-#get_ipython().run_line_magic('load_ext', 'autoreload')
-
-#get_ipython().run_line_magic('autoreload', '2')
-#get_ipython().run_line_magic('reload_ext', 'autoreload')
 
 
 
 
-# In[39]:
-
-
-#get_ipython().system(' ~/bin/develtools/nbconvert insert_files.ipynb')
-
-
-
-
-# In[40]:
 
 
 import builtins
@@ -67,7 +51,6 @@ import time
 
 
 
-# In[41]:
 
 
 import PySimpleGUI as sg
@@ -80,7 +63,6 @@ from rich.markdown import Markdown
 
 
 
-# In[42]:
 
 
 # FORMAT = constants.FORMAT
@@ -91,7 +73,6 @@ from rich.markdown import Markdown
 
 
 
-# In[43]:
 
 
 def do_exit(e='unknown error in unknown module!', exit_status=99):
@@ -137,7 +118,6 @@ def do_exit(e='unknown error in unknown module!', exit_status=99):
 
 
 
-# In[44]:
 
 
 def adjust_handler(handler=None, new_level=None):
@@ -171,7 +151,6 @@ def adjust_handler(handler=None, new_level=None):
 
 
 
-# In[45]:
 
 
 class multi_line_string():
@@ -209,7 +188,6 @@ class multi_line_string():
 
 
 
-# In[46]:
 
 
 def wrap_print(t='', width=None, supress_print=False):
@@ -235,7 +213,6 @@ def wrap_print(t='', width=None, supress_print=False):
 
 
 
-# In[47]:
 
 
 def parse_cmdargs():
@@ -268,7 +245,6 @@ def parse_cmdargs():
 
 
 
-# In[48]:
 
 
 def read_config(files):
@@ -287,7 +263,6 @@ def read_config(files):
 
 
 
-# In[49]:
 
 
 def check_drive_path(drive_path=None):
@@ -348,7 +323,6 @@ def check_drive_path(drive_path=None):
 
 
 
-# In[50]:
 
 
 def print_help():
@@ -368,7 +342,6 @@ def print_help():
 
 
 
-# In[51]:
 
 
 def init_db():
@@ -394,7 +367,6 @@ def init_db():
 
 
 
-# In[52]:
 
 
 class job_time():
@@ -409,7 +381,6 @@ class job_time():
 
 
 
-# In[53]:
 
 
 # def window_get_dir():
@@ -435,7 +406,6 @@ class job_time():
 
 
 
-# In[54]:
 
 
 def window_drive_path():
@@ -456,7 +426,6 @@ def window_drive_path():
 
 
 
-# In[55]:
 
 
 def window_get_dir():
@@ -493,7 +462,6 @@ def window_get_dir():
 
 
 
-# In[56]:
 
 
 def get_grade_level():
@@ -526,7 +494,6 @@ def get_grade_level():
 
 
 
-# In[57]:
 
 
 def list_jobs(show_deleted=False):
@@ -569,7 +536,6 @@ def list_jobs(show_deleted=False):
 
 
 
-# In[58]:
 
 
 def window_get_past_job():
@@ -623,7 +589,6 @@ def window_get_past_job():
 
 
 
-# In[59]:
 
 
 # def open_db():
@@ -637,7 +602,6 @@ def window_get_past_job():
 
 
 
-# In[60]:
 
 
 def db_cleanup(retire_age=None):
@@ -688,7 +652,6 @@ def db_cleanup(retire_age=None):
 
 
 
-# In[61]:
 
 
 def delete_files():
@@ -792,7 +755,6 @@ def delete_files():
 
 
 
-# In[62]:
 
 
 def table_entry(job_id=None, local_path=None, remote_path=None, sub_folder=None,
@@ -814,7 +776,6 @@ def table_entry(job_id=None, local_path=None, remote_path=None, sub_folder=None,
 
 
 
-# In[63]:
 
 
 def sort_files(files, job_id=0):
@@ -860,7 +821,6 @@ def sort_files(files, job_id=0):
 
 
 
-# In[64]:
 
 
 def cache_dirs(path, depth=2):
@@ -883,7 +843,6 @@ def cache_dirs(path, depth=2):
 
 
 
-# In[65]:
 
 
 def match_dirs(files, cache):
@@ -920,7 +879,6 @@ def match_dirs(files, cache):
 
 
 
-# In[66]:
 
 
 def write_summary(file_list):
@@ -981,7 +939,6 @@ def write_summary(file_list):
 
 
 
-# In[67]:
 
 
 def write_db(file_list):
@@ -1022,7 +979,6 @@ def write_db(file_list):
 
 
 
-# In[68]:
 
 
 def insert_files(files, sub_folder):
@@ -1114,7 +1070,6 @@ def insert_files(files, sub_folder):
 
 
 
-# In[ ]:
 
 
 
@@ -1122,7 +1077,6 @@ def insert_files(files, sub_folder):
 
 
 
-# In[69]:
 
 
 def main_program(interactive=False, window=None, update_config=False):
@@ -1295,7 +1249,6 @@ def main_program(interactive=False, window=None, update_config=False):
 
 
 
-# In[70]:
 
 
 def main():
@@ -1384,7 +1337,6 @@ def main():
 
 
 
-# In[71]:
 
 
 # from IPython.core.debugger import set_trace
@@ -1392,7 +1344,6 @@ def main():
 
 
 
-# In[72]:
 
 
 if __name__ =='__main__':
@@ -1401,7 +1352,6 @@ if __name__ =='__main__':
 
 
 
-# In[ ]:
 
 
 # adjust_handler(handler='Stream', new_level='DEBUG')
