@@ -1,9 +1,10 @@
 #!/bin/zsh
 source_path=./insert_files
 
-publish_tar=insert_files.tgz
+#publish_tar=insert_files.tgz
+publish_pkg=insert_files.pkg
 
-version_number=`grep version $source_path/constants.py | sed -nE  's/^VERSION[ ]+=[ ]+(.*)/\1/p' | tr -d \'\"`
+version_number=`grep VERSION $source_path/constants.py | sed -nE  's/^VERSION[ ]+=[ ]+(.*)/\1/p' | tr -d \'\"`
 
 
 if [ -z "$1" ]; then
@@ -19,6 +20,13 @@ fi
 
 tag="v$version_number"
 
+pycodesign.py -O $version_number codesign.ini
+
+if [ $? -ne 0 ]: then
+  echo codesigning failed, exiting
+  exit
+fi
+
 git tag -a "$tag" -m "$1"
-git commit -m "update tar distribution $1" $publish_tar
+git commit -m "update tar distribution $1" $publish_pkg
 git push origin $tag 
