@@ -6,29 +6,32 @@ Previous versions that are no longer supported can found [here](https://github.c
 ## Quick Start
 
 **IF YOU ARE UNFAMILIAR WITH THIS APPLICATION PLEASE SEE THE [INSTRUCTIONS](#Instructions) SECTION BELOW.**
+If the application is not installed, see the installation instructions below.
 
-1. [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
-1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.pkg)
-2. Locate the file `insert_files.pkg` -- likely in your `Downloads` folder
-3. Double click on the file to run the installer
-   * You will likely need an administrator password to install this application
-5. Locate the `insert_files` icon in your `Applications` folder and double click on it to run
-    * If you receive error messages or popups preventing you from running the application see the [Help](#Help) section
-6. Click "Insert Files" button to begin inserting files.
-7. If this is the first time you have run this program, you will be asked to choose a Google Shared drive **and** cumulative student folder. 
+1. Locate the `insert_files` icon in your `Applications` folder and double click on it to run
+    * If you receive error messages or popups preventing you from running the application see the [Help](#ChooseSharedDrive) section
+2. Click "Insert Files" button to begin inserting files.
+3. If this is the first time you have run this program, you will be asked to choose a Google Shared drive **and** cumulative student folder. 
     * If you are unsure how to do this, see the [Help](#Help) section
-8. Browse to a folder that contains files to be inserted and click "OK"
-   * Each of these files will be inserted into the same grade-level folder for each student
-9. Next select a grade level folder -- the selected files will be deposeted into that folder for each student
-10. Repeat as needed
+4. Browse to a folder that contains files to be inserted and click "OK"
+   * Each of these files will be inserted into the same grade-level folder for **EVERY** student
+5. Next select a grade level folder -- the selected files will be deposeted into that folder for each student
+6. Repeat as needed
 
 ## Instructions
 <a name="Instructions"></a>
 
 ### Getting Started
-You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream](#SetupFilestream). 
+You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream](#SetupFilestream). Once FileStream is installed, download and install the application.
 
-The first time you run insert_files, you must specify the Shared Drive **AND** the student cumulative folder. Once you have set this up the first time, it is not necessary to chage this setting unless the name of the drive or folder chagnes. See [Choosing the Shared Drive and Cumulative Student Folder](#ChooseSharedDrive) below for help.
+1. If the application is not in[Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
+1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.pkg)
+2. Locate the file `insert_files.pkg` -- likely in your `Downloads` folder
+3. Double click on the file to run the installer
+   * You will likely need an administrator password to install this application
+4. Locate the insert_files applicaiton in your Applications folder and double click to launch it.
+   * The first time you run insert_files, you must specify the Shared Drive **AND** the student cumulative folder. Once you have set this up the first time, it is not necessary to chage this setting unless the name of the drive or folder chagnes. 
+   * See [Choosing the Shared Drive and Cumulative Student Folder](#ChooseSharedDrive) below for help.
 
 ### Preparing Files to be Inserted
 This application is designed to work with files that are separated by grade level. insert_files will process all of the files in a folder and copy them into the cumulative files by GRADE LEVEL. For example all Grade-3 Map tests results can be inserted into the Grade-03 folder for each individual student. 
