@@ -136,5 +136,5 @@ Google FileStream is required for createFolders. The user must be signed in with
     
 ### Complete Uninstall
 To completely uninstall the application do the following:
-1. Remove the executable `createFolders` application
+1. Remove the executable `insert_files` application
 2. From the terminal run `$ rm -rf ~/.config/com.txoof.insert_files`
