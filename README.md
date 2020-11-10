@@ -5,8 +5,8 @@ Previous versions that are no longer supported can found [here](https://github.c
 
 ## Quick Start
 
-**IF YOU ARE UNFAMILIAR WITH THIS APPLICATION PLEASE SEE THE [INSTRUCTIONS](#Instructions) SECTION BELOW.**
-If the application is not installed, see the installation instructions below.
+**IF YOU ARE UNFAMILIAR WITH THIS APPLICATION PLEASE SEE THE COMPLETE [INSTRUCTIONS](#Instructions) SECTION BELOW.**
+If the application is not installed, see the [installation instructions below](#gettingStarted).
 
 1. Locate the `insert_files` icon in your `Applications` folder and double click on it to run
     * If you receive error messages or popups preventing you from running the application see the [Help](#ChooseSharedDrive) section
@@ -22,6 +22,7 @@ If the application is not installed, see the installation instructions below.
 <a name="Instructions"></a>
 
 ### Getting Started
+<a name='gettingStarted'> </a>
 You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream](#SetupFilestream). Once FileStream is installed, download and install the application.
 
 1. If the application is not in[Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
