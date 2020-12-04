@@ -1,6 +1,6 @@
 from pathlib import Path
 
-VERSION = '1.1.5'
+VERSION = '1.1.6'
 APP_NAME = 'insert_files'
 DEVEL_NAME = 'com.txoof'
 APP_DESC = '''insert individual student files into cumulative folders'''
@@ -54,7 +54,7 @@ DATABASE_PATH = STORAGE/DATABASE
 STUDENT_DIRS = ['Admissions',
                 '00-Preschool',
                 '00-Transition Kindergarten',
-                '00-Kindergarten',
+                '00-zKindergarten',
                 '01-Grade',
                 '02-Grade',
                 '03-Grade',
