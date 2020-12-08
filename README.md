@@ -1,7 +1,7 @@
 # insert_files
+## Current Version: 1.1.1.1.1.1
 insert_files files by grade-level into Student Cumulative Folders on Google Drive.
 
-Previous versions that are no longer supported can found [here](https://github.com/txoof/insertFiles/tree/development/Automator_version)
 
 ## Quick Start
 
