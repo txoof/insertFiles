@@ -4,10 +4,14 @@ source_path=./insert_files
 #publish_tar=insert_files.tgz
 publish_pkg=insert_files.pkg
 
-version_number=`grep VERSION $source_path/constants.py | sed -nE  's/^VERSION[ ]+=[ ]+(.*)/\1/p' | tr -d \'\"`
+version_number=$(grep VERSION $source_path/constants.py | sed -nE  's/^VERSION[ ]+=[ ]+(.*)/\1/p' | tr -d \'\")
+
 
 
 if [ -z "$1" ]; then
+  echo $0 updates the readme with current version number and pushes
+  echo and tags a release of $publish_pkg to github
+  echo " " 
   echo current version number: v$version_number
   echo tar build, tag and push release to github
   echo usage:
@@ -15,16 +19,27 @@ if [ -z "$1" ]; then
   exit 0
 fi
 
-# run the build script
-#./build.sh
+echo "updating README.md"
+
+if ! command -v /usr/local/bin/gsed
+then
+  echo "gnu-sed must be installed for this script to function properly:"
+  echo "$ brew install gnu-sed"
+  exit 1
+else
+  gsed -i "s/\(## Current Version:\).*/\1 $version_number/g" README.md
+  gsed -i "s/^M//g" README.md
+  git commit -m "update version " README.md
+fi
 
 tag="v$version_number"
 
 pycodesign.py -O $version_number codesign.ini
 
-if [ $? -ne 0 ]: then
+if [ $? -ne 0 ] 
+then
   echo codesigning failed, exiting
-  exit
+  exit 1
 fi
 
 git tag -a "$tag" -m "$1"
