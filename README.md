@@ -121,14 +121,14 @@ createFolders needs to know both which Google Shared Drive to use and the folder
 
 <a name="SetupGoogleDrive"></a>
 ### Setup Google Drive 
-Google FileStream is required for createFolders. The user must be signed in with an account that has `Contributor` permissions to the [Student Cumulative folders drive](https://drive.google.com/drive/folders/0AKKRR6NkiaQBUk9PVA). 
+Google Drive is required for insertFiles. The user must be signed in with an account that has `Contributor` permissions to the [Student Cumulative folders drive](https://drive.google.com/drive/folders/0AKKRR6NkiaQBUk9PVA). 
 
-1. Download [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) and run the installer.
-2. Launch Google FileStream if it is not running (look for the icon in the menu bar) and click "Sign in"
+1. Request that the IT Office remotely installs Google Drive on your device.
+2. Launch Google Drive if it is not running (look for the icon in the menu bar) and click "Sign in"
     ![filestream icon](./documentation/filestream_ico.png)
 3. Use your @ash.nl credentials for an account that has access to the cumulative folders drive.
     * You will likely be asked to sign in using your two-step verification; this is normal
-4. Click on the filestream icon in the menu bar and click on the folder icon to view your google drive files
+4. Click on the Google Drive icon in the menu bar and click on the folder icon to view your google drive files
     * It may take several minutes before your folders and files are all visible
 5. Browse to the `Shared drives` and locate the `ASH Student Cumulative Folders` drive to confirm you have access
     * If you do not have access, you have likely used an account that does not have permissions. Sign out and try again.
