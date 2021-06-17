@@ -24,9 +24,8 @@ If the application is not installed, see the [installation instructions below](#
 <a name='gettingStarted'> </a>
 ### Getting Started
 
-You must have google File Stream installed and a user that has `Contributor` permissions must be signed in before using this program. See [Help: Setting up FileStream](#SetupFilestream). Once FileStream is installed, download and install the application.
+You must have the Google Drive application installed on your computer. You must be signed in to the Google Drive application with a user that has `Contributor` permissions. See [Help: Setting up Google Drive](#SetupGoogleDrive). Once Google Drive is installed, download and install the application.
 
-1. If the application is not in[Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) installed and are signed in as well as a prepared student.export file from PowerSchool.
 1. Download the application from [this link](https://github.com/txoof/insertFiles/raw/master/insert_files.pkg)
 2. Locate the file `insert_files.pkg` -- likely in your `Downloads` folder
 3. Double click on the file to run the installer
@@ -120,8 +119,8 @@ createFolders needs to know both which Google Shared Drive to use and the folder
     * You can always change this folder later if you have made a mistake
 7. Click "Process File" to begin processing a student.export file    
 
-<a name="SetupFilestream"></a>
-### Setup Google FileStream
+<a name="SetupGoogleDrive"></a>
+### Setup Google Drive 
 Google FileStream is required for createFolders. The user must be signed in with an account that has `Contributor` permissions to the [Student Cumulative folders drive](https://drive.google.com/drive/folders/0AKKRR6NkiaQBUk9PVA). 
 
 1. Download [Google FileStream](https://dl.google.com/drive-file-stream/GoogleDriveFileStream.dmg) and run the installer.
